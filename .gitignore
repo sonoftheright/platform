@@ -1,0 +1,17 @@
+.DS_Store
+
+example.m
+example.o
+
+build/Example.app
+
+run/example
+
+*.trace
+
+*.ety
+*.typ
+
+*.exp
+
+*.dSYM
