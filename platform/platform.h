@@ -502,6 +502,9 @@ typedef struct {
 #define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
 #define BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
 
+// simple 'here' check to make sure we're reaching a function call
+#define p_here() p_log(CYAN "here: " BOLDCYAN "%s(), %s:%i\n" RESET, __func__, __FILE__, __LINE__)
+
 // Reads a single UTF8 codepoint.
 const char *_p_decode_utf8(const char *text, int *cp) {
   unsigned char c = *text++;
@@ -4555,13 +4558,12 @@ float p_vec3_dot(vec3 a, vec3 b){
    return (a[0] * b[0]) + (a[1] * b[1]) + (a[2] * b[2]);
 }
 
-static inline void p_quat_from_normal(quat q, vec3 normal, vec3 up, float additional_rotation){
+static inline void p_quat_from_normal(quat q, vec3 normal, vec3 up){
   vec3 axis;
   p_vec3_mul_cross(axis, up, normal); // axis = up x normal
+  p_vec3_norm(axis, axis);
   float dotted = p_vec3_dot(up, normal);
   float angle = acos(dotted); // angle = arccos(up dot normal)
-  angle += additional_rotation;
-  p_vec3_norm(axis, axis);
   p_quat_from_axis_angle(q, axis, angle); // set quaternion based on axis and angle
 }
 
