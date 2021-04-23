@@ -127,7 +127,7 @@ void draw_simple_mesh(
   /*
     model transforms:
   */
-  mat4x4_identity(model_matrix); // start with identity
+  p_mat4x4_identity(model_matrix); // start with identity
   // mat4x4_identity(scale_matrix);    // start with identity
   // mat4x4_identity(translate_matrix);// start with identity
   // mat4x4_identity(rotate_matrix);   // start with identity

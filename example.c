@@ -7,7 +7,7 @@ THIS IS AN EXAMPLE PROGRAM TO MAKE SURE THAT THE PLATFORM CODE IS GOOD
 #define TIGR_IMPLEMENTATION
 #include "platform/platform.h"
 
-#include "example_includes/linmath.h" // linear math lib for gl stuff
+// #include "example_includes/linmath.h" // linear math lib for gl stuff
 
 #include "example_includes/gl.c" // next files rely on this
 #include "example_includes/simple_render.c"
@@ -26,6 +26,7 @@ int main() { // int argc, char *argv[]
   p->window.clear_color[2] = 0.26;
 
   printf("hello platform!\n");
+  p_stacktrace();
 
   // start a new timer with this platform version, and the '0' index.
   p_timer_start(p, 0);

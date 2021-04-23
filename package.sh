@@ -1,3 +1,4 @@
+#!/bin/bash
 # THIS WILL WORK AS LONG AS WE DON'T HAVE ANY dylibs!!!
 # SEE HERE FOR DETAILS: https://stackoverflow.com/questions/1596945/building-osx-app-bundle
 
@@ -16,7 +17,7 @@ case "$OSTYPE" in
     cp ./build/mac_app_files/Example.icns ./build/Example.app/Contents/Resources/
     cp ./build/mac_app_files/Info.plist ./build/Example.app/Contents/
     cp ./build/mac_app_files/run.sh ./build/Example.app/Contents/MacOS/
-    cp ./run/_example ./build/Example.app/Contents/MacOS/run/
+    cp ./run/example ./build/Example.app/Contents/MacOS/run/
 
     cp -r ./run/assets/* ./build/Example.app/Contents/MacOS/run/assets/
 

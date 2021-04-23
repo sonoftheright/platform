@@ -8225,7 +8225,49 @@ void p_create_window(platform_api *api, int w, int h, char *title, float scale){
 ***********************************************************************************************************************/
 
 #if defined(_WIN32) && defined(__STDC_WANT_SECURE_LIB__)
-#include <dbghelp.h>
+  #include <dbghelp.h>
+#else
+  #include <execinfo.h>// for backtrace
+#endif
+void p_stacktrace(){
+#ifdef _WIN32
+  unsigned int i;
+  void *stack[100];
+  unsigned short frames;
+  SYMBOL_INFO *symbol;
+  HANDLE process;
+
+  process = GetCurrentProcess();
+  SymInitialize(process, NULL, TRUE);
+
+  frames = CaptureStackBackTrace(0, 100, stack, NULL);
+  symbol = (SYMBOL_INFO *)calloc(sizeof(SYMBOL_INFO) + 256 * sizeof(char), 1);
+  symbol->MaxNameLen = 255;
+  symbol->SizeOfStruct = sizeof(SYMBOL_INFO);
+
+  p_log(YELLOW "----\n");
+  for(i = 0; i < frames; i++) {
+    SymFromAddr(process, (DWORD64)(stack[i]), 0, symbol);
+    p_log("%i: %s - 0x%0llX\n", frames - i - 1, symbol->Name, symbol->Address);
+  }
+  p_log(RESET "----\n");
+
+  free(symbol);
+#elif __APPLE__
+  void *array[10];
+  size_t size;
+
+  // get void*'s for all entries on the stack
+  size = backtrace(array, 10);
+
+  p_log(YELLOW "----\n");
+  // print out all the frames to log
+  backtrace_symbols_fd(array, size, STDOUT_FILENO);
+  p_log(RESET "----\n");
+#endif
+}
+
+#if defined(_WIN32) && defined(__STDC_WANT_SECURE_LIB__)
 
 char *p_strcat_s(char *a, size_t size, const char *b){
    strcat_s(a,size,b);
@@ -8254,27 +8296,8 @@ static char *p_strcpy_s(char *a, size_t size, const char *b){
 #endif
 
 void handler(int sig) {
-  unsigned int i;
-  void *stack[100];
-  unsigned short frames;
-  SYMBOL_INFO *symbol;
-  HANDLE process;
-
-  process = GetCurrentProcess();
-  SymInitialize(process, NULL, TRUE);
-
-  frames = CaptureStackBackTrace(0, 100, stack, NULL);
-  symbol = (SYMBOL_INFO *)calloc(sizeof(SYMBOL_INFO) + 256 * sizeof(char), 1);
-  symbol->MaxNameLen = 255;
-  symbol->SizeOfStruct = sizeof(SYMBOL_INFO);
-
   p_flog(stderr, "Error: signal %d:\n", sig);
-  for(i = 0; i < frames; i++) {
-    SymFromAddr(process, (DWORD64)(stack[i]), 0, symbol);
-    p_log("%i: %s - 0x%0llX\n", frames - i - 1, symbol->Name, symbol->Address);
-  }
-
-  free(symbol);
+  p_stacktrace();
   exit(1);
 }
 
@@ -8286,7 +8309,6 @@ static FILE *p_fopen(const char *filename, const char *mode) {
     return NULL;
 }
 #else
-#include <execinfo.h>// for backtrace
 #include <unistd.h>// for STDERR_FILENO
 
 char *p_strcat_s(char *a, size_t size, const char *b){
@@ -8306,17 +8328,11 @@ char *p_strcat_s(char *a, size_t size, const char *b){
 #define p_size(x)
 
 void handler(int sig) {
-  void *array[10];
-  size_t size;
-
-  // get void*'s for all entries on the stack
-  size = backtrace(array, 10);
-
-  // print out all the frames to stderr
   p_flog(stderr, "Error: signal %d:\n", sig);
-  backtrace_symbols_fd(array, size, STDERR_FILENO);
+  p_stacktrace();
   exit(1);
 }
+
 #define p_fopen fopen
 #endif
 
