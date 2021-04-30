@@ -504,6 +504,7 @@ typedef struct {
 
 // simple 'here' check to make sure we're reaching a function call
 #define p_here() p_log(CYAN "here: " BOLDCYAN "%s(), %s:%i\n" RESET, __func__, __FILE__, __LINE__)
+#define p_line_inline() p_log(CYAN "line: " BOLDCYAN "%i" RESET, __LINE__)
 
 // Reads a single UTF8 codepoint.
 const char *_p_decode_utf8(const char *text, int *cp) {
@@ -3977,6 +3978,18 @@ static inline void p_vec##n##_set(vec##n to, vec##n from) \
   for(i=0; i<n; ++i) \
   to[i] = from[i]; \
 } \
+static inline int p_vec##n##_is_equal(vec##n to, vec##n from) \
+{ \
+  int i; \
+  int isEqual = 1; \
+  for(i=0; i<n; ++i){ \
+    if(to[i] != from[i]){ \
+      isEqual = 0; \
+      break; \
+    } \
+  } \
+  return isEqual; \
+} \
 void p_vec##n##_debug(vec##n input){ \
   p_log("vec%i{ ", n); \
   int i; \
@@ -3989,6 +4002,9 @@ PLATFORM_MATH_DEFINE_VEC(2)
 PLATFORM_MATH_DEFINE_VEC(3)
 PLATFORM_MATH_DEFINE_VEC(4)
 
+#define p_quat_is_equal p_vec4_is_equal
+#define p_quat_set p_vec4_set
+#define p_quat_debug p_vec4_debug
 
 static inline void p_vec3_mul_cross(vec3 r, vec3 const a, vec3 const b){
   r[0] = a[1]*b[2] - a[2]*b[1];
