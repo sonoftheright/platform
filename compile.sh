@@ -31,7 +31,7 @@ case "$OSTYPE" in
       echo "production build..."
       optimize="-O3"
     fi
-    options="-D DEBUG=1 -g -fsanitize=address -Wall -Werror -Wextra"
+    options="-D DEBUG=1 -g -fsanitize=address -Wall -Werror -Wextra -ObjC"
     # options="-O3" # higher optimizations
     includes=""
     # library_locs=""

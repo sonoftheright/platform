@@ -6,6 +6,7 @@ THIS IS AN EXAMPLE PROGRAM TO MAKE SURE THAT THE PLATFORM CODE IS GOOD
                                // know already, macos...
 #define TIGR_IMPLEMENTATION
 #include "platform/platform.h"
+#include "platform/utils.h"
 
 // #include "example_includes/linmath.h" // linear math lib for gl stuff
 
@@ -18,6 +19,12 @@ static int frame_time;
 
 int main() { // int argc, char *argv[]
   platform_api *p = p_init();
+  #ifdef _WIN32
+    p_log("running in Windows!\n");
+  #elif __APPLE__
+    p_log("running in MacOS!\n");
+    signal(SIGSEGV, p_handler); // install our error handler
+  #endif
 
   int init_window_width = 1024;
   int init_window_height = 700;
