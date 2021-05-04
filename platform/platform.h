@@ -3054,16 +3054,24 @@ void p_create_window(platform_api *api, int w, int h, char *title, float scale){
       }
     }
   }
-/*
+  /*
+  // starting on audio in windows, but commenting out for now:
+
+  #define DIRECT_SOUND_CREATE(name) HRESULT WINAPI name(LPGUID lpGuid, LPDIRECTSOUND* ppDS, LPUNKNOWN  pUnkOuter )
+  typedef DIRECT_SOUND_CREATE(direct_sound_create);
+
   // now, let's set up audio:
   // 1. Load the dsound library
   HMODULE DSoundLibrary = LoadLibraryA("dsound.dll");
+  if(!DSoundLibrary){
+
+  }
 
   // 2. Get a DirectSound object - cooperative
-  GetProcAddress(DSoundLibrary, "DirectSoundCreate");
+  direct_sound_create *DirectSoundCreate = (direct_sound_create *)GetProcAddress(DSoundLibrary, "DirectSoundCreate");
 
   int SamplesPerSecond = 48000;
-  int BufferSize = SamplesPerSecond * sizeof(uint16)*2;
+  int BufferSize = SamplesPerSecond * sizeof(int16)*2;
 
   LPDIRECTSOUND DirectSound;
   if(DirectSoundCreate(8, &DirectSound, 8) == ERROR_SUCCESS){
@@ -3072,9 +3080,9 @@ void p_create_window(platform_api *api, int w, int h, char *title, float scale){
     WaveFormat.wFormatTag = WAVE_FORMAT_PCM;
     WaveFormat.nChannels = 2;
     WaveFormat.nSamplesPerSec = SamplesPerSecond;
+    WaveFormat.wBitsPerSample = 16;
     WaveFormat.nBlockAlign = (WaveFormat.nChannels * WaveFormat.wBitsPerSample) / 8;
     WaveFormat.nAvgBytesPerSec = WaveFormat.nSamplesPerSec * WaveFormat.nBlockAlign;
-    WaveFormat.wBitsPerSample = 16;
     WaveFormat.cbSize = 8;
 
     if(DirectSound->SetCooperativeLevel(api->window.window_handle, DSSCL_PRIORITY) == ERROR_SUCCESS){
