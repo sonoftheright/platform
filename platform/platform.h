@@ -5,6 +5,8 @@
 #endif
 
 #define bool _Bool // NOTE: C99 and newer only
+#define true 1
+#define false 0
 
 /*
 Renderer options:
@@ -52,7 +54,7 @@ typedef long long p_int64;
   #include <winuser.h>
   #include <stdlib.h>
   #include <math.h>
-  #include <DSound.h> // may require linking?
+  // #include <DSound.h> // may require linking?
   #include <sysinfoapi.h>
 
 
@@ -634,52 +636,6 @@ void p_check_program_error(GLuint object) {
   }
 }
 #endif
-
-void p_error(platform_api *api, const char *message, ...) {
-#ifdef __APPLE__
-  (void)api;
-  char tmp[1024];
-
-  va_list args;
-  va_start(args, message);
-  p_vsnlog(tmp, sizeof(tmp), message, args);
-  tmp[sizeof(tmp) - 1] = 0;
-  va_end(args);
-
-  CFStringRef header =
-      CFStringCreateWithCString(NULL, "Error", kCFStringEncodingUTF8);
-  CFStringRef msg = CFStringCreateWithCString(NULL, tmp, kCFStringEncodingUTF8);
-  CFUserNotificationDisplayNotice(0.0, kCFUserNotificationStopAlertLevel, NULL,
-                                  NULL, NULL, header, msg, NULL);
-  CFRelease(header);
-  CFRelease(msg);
-#elif _WIN32
-  char tmp[1024];
-
-  va_list args;
-  va_start(args, message);
-  p_vsnlog(tmp, sizeof(tmp), message, args);
-  tmp[sizeof(tmp) - 1] = 0;
-  va_end(args);
-
-  MessageBoxW((HWND)api->window.window_handle, unicode(tmp),
-              api->window.wtitle, MB_OK | MB_ICONERROR);
-  exit(1);
-#endif
-  exit(1);
-}
-
-void p_check_os_error(){
-#ifdef _WIN32
-  char err[256];
-  memset(err, 0, 256);
-  FormatMessage( FORMAT_MESSAGE_FROM_SYSTEM, NULL, GetLastError(),
-                 MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), err, 255, NULL);
-  p_wlog(L"%s\n", err); // just for the safe case
-  puts(err);
-#elif __APPLE__
-#endif
-}
 
 void _p_update_window_size(platform_api *api, int render_width, int render_height, float scale){
   api->window.scale = scale > 0.0 ? scale : 1.0; // never set scale to 0
