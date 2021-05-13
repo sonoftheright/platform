@@ -1,6 +1,6 @@
 This is a sample application built on top of a simple platform layer that provides input handling and an OpenGL rendering capabilities for either MacOS or Windows.
 
-Currently all platform code resides in the `platform/platform.h` header file. The rest of this repository is the "user" code for the sample application.
+Currently all the core platform code resides in the `platform/platform.h` header file. It includes a few other separate headers for various internal things. The rest of this repository is the "user" code for the sample application.
 
 In order to compile the example program, you should just run `./compile_and_run.sh` in either your Mac console or `./compile_and_run.bat` in Windows.
 
@@ -17,7 +17,8 @@ All that is expected of the example program right now is:
 
 This is based on a [stream](https://www.youtube.com/watch?v=CJSvTqgBkQk) that [Sean Barrett](https://github.com/nothings) did, where he was working on a single-file platform library.
 This repo is a sample program to "prove out" and serve as a test for the platform layer.
-The philosophy behind the platform header file is to provide a single include that provides immediate access to building a native program. While it is very large, it has no other dependencies (besides OS/standard libraries), and can be included easily into a project.
+The philosophy behind the platform header file is to provide a single entry point to #include that provides immediate access to building a native program.
+While it is very large, it has no other dependencies (besides OS/standard libraries), and can be included easily into a project.
 
 Other references this is based on:
 - [TIGR](https://github.com/erkkah/tigr)

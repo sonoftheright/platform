@@ -1,3 +1,5 @@
+#!/bin/bash
+
 FLAG=$1
 
 case "$OSTYPE" in

@@ -94,6 +94,11 @@ PLATFORM_MATH_DEFINE_VEC(4)
 #define p_quat_set p_vec4_set
 #define p_quat_debug p_vec4_debug
 
+#define p_lerp(t,a,b)               ( (a) + (t) * (float) ((b)-(a)) )
+#define p_unlerp(t,a,b)             ( ((t) - (a)) / (float) ((b) - (a)) )
+
+#define p_clamp(x,xmin,xmax)  ((x) < (xmin) ? (xmin) : (x) > (xmax) ? (xmax) : (x))
+
 static inline void p_vec3_mul_cross(vec3 r, vec3 const a, vec3 const b){
   r[0] = a[1]*b[2] - a[2]*b[1];
   r[1] = a[2]*b[0] - a[0]*b[2];

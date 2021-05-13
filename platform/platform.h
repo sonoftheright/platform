@@ -125,6 +125,106 @@ typedef long long p_int64;
 
 #endif
 
+#ifdef __APPLE__
+  #include <TargetConditionals.h>
+  #ifdef TARGET_OS_MAC
+
+    #include <CoreGraphics/CoreGraphics.h>
+    #include <CoreAudio/CoreAudio.h>
+    #include <objc/message.h>
+    #include <objc/NSObjCRuntime.h>
+    #include <mach/mach_time.h>
+    #include <sys/sysctl.h> // for sys info like memory amount, etc
+
+    // maybe this is available somewhere in objc runtime?
+    #if __LP64__ || (TARGET_OS_EMBEDDED && !TARGET_OS_IPHONE) || \
+        TARGET_OS_WIN32 || NS_BUILD_32_LIKE_64
+      #define NSIntegerEncoding "q"
+      #define NSUIntegerEncoding "L"
+    #else
+      #define NSIntegerEncoding "i"
+      #define NSUIntegerEncoding "I"
+    #endif
+
+    // #ifdef __OBJC__
+    // #import <Cocoa/Cocoa.h>
+    // #else
+
+    // this is how they are defined originally
+    // #include <CoreGraphics/CGBase.h>
+    // #include <CoreGraphics/CGGeometry.h>
+    typedef CGPoint NSPoint;
+    typedef CGSize NSSize;
+    typedef CGRect NSRect;
+
+    extern id NSApp;
+    extern id const NSDefaultRunLoopMode;
+    // #endif
+
+  // styleMask options:
+  int NSWindowStyleMaskBorderless;
+  int NSWindowStyleMaskTitled;
+  int NSWindowStyleMaskClosable;
+  int NSWindowStyleMaskMiniaturizable;
+  int NSWindowStyleMaskResizable;
+  int NSWindowStyleMaskTexturedBackground; // DEPRECATED
+  int NSWindowStyleMaskUnifiedTitleAndToolbar;
+  int NSWindowStyleMaskFullScreen;
+  int NSWindowStyleMaskFullSizeContentView;
+  int NSWindowStyleMaskUtilityWindow;
+  int NSWindowStyleMaskDocModalWindow;
+  int NSWindowStyleMaskNonactivatingPanel;
+  int NSWindowStyleMaskHUDWindow;
+
+  // backing store options:
+  int NSBackingStoreRetained; // DEPRECATED
+  int NSBackingStoreNonretained; // DEPRECATED
+  int NSBackingStoreBuffered;
+
+  #if defined(__OBJC__) && __has_feature(objc_arc)
+    // #define ARC_AVAILABLE
+    #error \
+        "Can't compile as objective-c code just yet! (see autorelease pool todo below)"``
+    #endif
+
+    // ABI is a bit different between platforms
+    #ifdef __arm64__
+    // objc_msgSend: Sends a message with a simple return value to an instance of a class.
+    // objc_msgSend_stret: Sends a message with a data-structure return value to an instance of a class. (STruct RETurn)
+    // objc_msgSend_fpret: Sends a message with a floating-point return value to an instance of a class. (Floating Point RETurn)
+
+      #define abi_objc_msgSend_stret objc_msgSend
+    #else
+      #define abi_objc_msgSend_stret objc_msgSend_stret
+    #endif
+
+    #ifdef __i386__
+      #define abi_objc_msgSend_fpret objc_msgSend_fpret
+    #else
+      #define abi_objc_msgSend_fpret objc_msgSend
+    #endif
+
+    #define objc_msgSend_id ((id(*)(id, SEL))objc_msgSend)
+    #define objc_msgSend_void ((void (*)(id, SEL))objc_msgSend)
+    #define objc_msgSend_void_id ((void (*)(id, SEL, id))objc_msgSend)
+    #define objc_msgSend_void_bool ((void (*)(id, SEL, BOOL))objc_msgSend)
+    #define objc_msgSend_id_const_char ((id(*)(id, SEL, const char *))objc_msgSend)
+
+    bool terminated = false;
+
+    static id global_autoreleasePool = NULL;
+
+    void _p_clean_up_macos() {
+      #ifdef ARC_AVAILABLE
+      // TODO autorelease pool
+      #else
+        objc_msgSend_void(global_autoreleasePool, sel_registerName("drain"));
+      #endif
+    }
+
+  #endif
+#endif
+
 #ifdef PLATFORM_USE_OPENGL
   #ifdef _WIN32
     #include <GL/gl.h>
@@ -472,141 +572,7 @@ typedef struct {
 
 
 #include "_log.h" // for p_log functions
-
-// Reads a single UTF8 codepoint.
-const char *_p_decode_utf8(const char *text, int *cp) {
-  unsigned char c = *text++;
-  int extra = 0, min = 0;
-  *cp = 0;
-  if(c >= 0xf0) {
-    *cp = c & 0x07;
-    extra = 3;
-    min = 0x10000;
-  } else if(c >= 0xe0) {
-    *cp = c & 0x0f;
-    extra = 2;
-    min = 0x800;
-  } else if(c >= 0xc0) {
-    *cp = c & 0x1f;
-    extra = 1;
-    min = 0x80;
-  } else if(c >= 0x80) {
-    *cp = 0xfffd;
-  } else
-    *cp = c;
-  while(extra--) {
-    c = *text++;
-    if((c & 0xc0) != 0x80) {
-      *cp = 0xfffd;
-      break;
-    }
-    (*cp) = ((*cp) << 6) | (c & 0x3f);
-  }
-  if(*cp < min) *cp = 0xfffd;
-  return text;
-}
-
 #include "_defines.h" // for all OpenGL constants & function names
-
-#ifdef __APPLE__
-  #include <TargetConditionals.h>
-  #ifdef TARGET_OS_MAC
-
-    #include <CoreGraphics/CoreGraphics.h>
-    #include <CoreAudio/CoreAudio.h>
-    #include <objc/message.h>
-    #include <objc/NSObjCRuntime.h>
-    #include <mach/mach_time.h>
-    #include <sys/sysctl.h> // for sys info like memory amount, etc
-
-    // maybe this is available somewhere in objc runtime?
-    #if __LP64__ || (TARGET_OS_EMBEDDED && !TARGET_OS_IPHONE) || \
-        TARGET_OS_WIN32 || NS_BUILD_32_LIKE_64
-      #define NSIntegerEncoding "q"
-      #define NSUIntegerEncoding "L"
-    #else
-      #define NSIntegerEncoding "i"
-      #define NSUIntegerEncoding "I"
-    #endif
-
-    // #ifdef __OBJC__
-    // #import <Cocoa/Cocoa.h>
-    // #else
-
-    // this is how they are defined originally
-    // #include <CoreGraphics/CGBase.h>
-    // #include <CoreGraphics/CGGeometry.h>
-    typedef CGPoint NSPoint;
-    typedef CGSize NSSize;
-    typedef CGRect NSRect;
-
-    extern id NSApp;
-    extern id const NSDefaultRunLoopMode;
-    // #endif
-
-  // styleMask options:
-  int NSWindowStyleMaskBorderless;
-  int NSWindowStyleMaskTitled;
-  int NSWindowStyleMaskClosable;
-  int NSWindowStyleMaskMiniaturizable;
-  int NSWindowStyleMaskResizable;
-  int NSWindowStyleMaskTexturedBackground; // DEPRECATED
-  int NSWindowStyleMaskUnifiedTitleAndToolbar;
-  int NSWindowStyleMaskFullScreen;
-  int NSWindowStyleMaskFullSizeContentView;
-  int NSWindowStyleMaskUtilityWindow;
-  int NSWindowStyleMaskDocModalWindow;
-  int NSWindowStyleMaskNonactivatingPanel;
-  int NSWindowStyleMaskHUDWindow;
-
-  // backing store options:
-  int NSBackingStoreRetained; // DEPRECATED
-  int NSBackingStoreNonretained; // DEPRECATED
-  int NSBackingStoreBuffered;
-
-  #if defined(__OBJC__) && __has_feature(objc_arc)
-    // #define ARC_AVAILABLE
-    #error \
-        "Can't compile as objective-c code just yet! (see autorelease pool todo below)"``
-    #endif
-
-    // ABI is a bit different between platforms
-    #ifdef __arm64__
-    // objc_msgSend: Sends a message with a simple return value to an instance of a class.
-    // objc_msgSend_stret: Sends a message with a data-structure return value to an instance of a class. (STruct RETurn)
-    // objc_msgSend_fpret: Sends a message with a floating-point return value to an instance of a class. (Floating Point RETurn)
-
-      #define abi_objc_msgSend_stret objc_msgSend
-    #else
-      #define abi_objc_msgSend_stret objc_msgSend_stret
-    #endif
-
-    #ifdef __i386__
-      #define abi_objc_msgSend_fpret objc_msgSend_fpret
-    #else
-      #define abi_objc_msgSend_fpret objc_msgSend
-    #endif
-
-    #define objc_msgSend_id ((id(*)(id, SEL))objc_msgSend)
-    #define objc_msgSend_void ((void (*)(id, SEL))objc_msgSend)
-    #define objc_msgSend_void_id ((void (*)(id, SEL, id))objc_msgSend)
-    #define objc_msgSend_void_bool ((void (*)(id, SEL, BOOL))objc_msgSend)
-    #define objc_msgSend_id_const_char ((id(*)(id, SEL, const char *))objc_msgSend)
-
-    bool terminated = false;
-
-    static id global_autoreleasePool = NULL;
-
-    void _p_clean_up_macos() {
-      #ifdef ARC_AVAILABLE
-      // TODO autorelease pool
-      #else
-        objc_msgSend_void(global_autoreleasePool, sel_registerName("drain"));
-      #endif
-    }
-
-  #endif
-#endif
 
 #ifdef PLATFORM_USE_OPENGL
 void p_check_gl_error(const char *state) {
@@ -1102,6 +1068,39 @@ void _p_update_window_size(platform_api *api, int render_width, int render_heigh
     case kVK_ANSI_Period: return PK_DOT;
     default: return 0;
     }
+  }
+
+  // Reads a single UTF8 codepoint.
+  const char *_p_decode_utf8(const char *text, int *cp) {
+    unsigned char c = *text++;
+    int extra = 0, min = 0;
+    *cp = 0;
+    if(c >= 0xf0) {
+      *cp = c & 0x07;
+      extra = 3;
+      min = 0x10000;
+    } else if(c >= 0xe0) {
+      *cp = c & 0x0f;
+      extra = 2;
+      min = 0x800;
+    } else if(c >= 0xc0) {
+      *cp = c & 0x1f;
+      extra = 1;
+      min = 0x80;
+    } else if(c >= 0x80) {
+      *cp = 0xfffd;
+    } else
+      *cp = c;
+    while(extra--) {
+      c = *text++;
+      if((c & 0xc0) != 0x80) {
+        *cp = 0xfffd;
+        break;
+      }
+      (*cp) = ((*cp) << 6) | (c & 0x3f);
+    }
+    if(*cp < min) *cp = 0xfffd;
+    return text;
   }
 
   void _p_on_cocoa_event(platform_api *api, id event) {
@@ -2321,7 +2320,7 @@ void p_swap_buffers(platform_api *api){
   #elif __APPLE__
     #ifdef PLATFORM_USE_OPENGL
       objc_msgSend_void((id)api->window.gl_context, sel_registerName("flushBuffer"));
-      objc_msgSend_void((id)objc_getClass("NSOpenGLContext"), sel_registerName("clearCurrentContext"));
+      // objc_msgSend_void((id)objc_getClass("NSOpenGLContext"), sel_registerName("clearCurrentContext"));
       objc_msgSend_void((id)api->window.gl_context, sel_registerName("makeCurrentContext"));
     #endif
   #endif
