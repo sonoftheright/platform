@@ -58,7 +58,7 @@ typedef long long p_int64;
   #include <sysinfoapi.h>
 
 
-  typedef long GLintptr;
+  // typedef long GLintptr;
   typedef unsigned char uint8_t;
   typedef unsigned short uint16_t;
   typedef unsigned int uint32_t;

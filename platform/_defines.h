@@ -1352,8 +1352,8 @@
     // typedef void ( *GLDEBUGPROCKHR)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
     // typedef void ( *GLDEBUGPROCAMD)(GLuint id,GLenum category,GLenum severity,GLsizei length,const GLchar *message,void *userParam);
     //
-    // typedef BOOL(WINAPI *PFNWGLCHOOSEPIXELFORMATARBPROC)(HDC hdc, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats);
-    // typedef HGLRC(WINAPI *PFNWGLCREATECONTEXTATTRIBSARBPROC)(HDC hDC, HGLRC hShareContext, const int *attribList);
+    typedef BOOL(WINAPI *PFNWGLCHOOSEPIXELFORMATARBPROC)(HDC hdc, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats);
+    typedef HGLRC(WINAPI *PFNWGLCREATECONTEXTATTRIBSARBPROC)(HDC hDC, HGLRC hShareContext, const int *attribList);
     // // typedef HGLRC(WINAPI *PFNWGLGETCURRENTCONTEXTARBPROC)(void);
     // // typedef BOOL(WINAPI *PFNWGLMAKECURRENTPROC)(HDC hDC, HGLRC hShareContext);
     //
@@ -2253,916 +2253,916 @@
   	// typedef void (APIENTRYP PFNGLGETFLOATI_VPROC)(GLenum target, GLuint index, GLfloat *data);
   	// typedef void (APIENTRYP PFNGLGETDOUBLEI_VPROC)(GLenum target, GLuint index, GLdouble *data);
     //
-    // #define WGL_DRAW_TO_WINDOW_ARB 0x2001
-    // #define WGL_SUPPORT_OPENGL_ARB 0x2010
-    // #define WGL_DOUBLE_BUFFER_ARB 0x2011
-    // #define WGL_PIXEL_TYPE_ARB 0x2013
-    // #define WGL_COLOR_BITS_ARB 0x2014
-    // #define WGL_DEPTH_BITS_ARB 0x2022
-    // #define WGL_STENCIL_BITS_ARB 0x2023
-    // #define WGL_TYPE_RGBA_ARB 0x202B
-    // #define WGL_CONTEXT_MAJOR_VERSION_ARB 0x2091
-    // #define WGL_CONTEXT_MINOR_VERSION_ARB 0x2092
+    #define WGL_DRAW_TO_WINDOW_ARB 0x2001
+    #define WGL_SUPPORT_OPENGL_ARB 0x2010
+    #define WGL_DOUBLE_BUFFER_ARB 0x2011
+    #define WGL_PIXEL_TYPE_ARB 0x2013
+    #define WGL_COLOR_BITS_ARB 0x2014
+    #define WGL_DEPTH_BITS_ARB 0x2022
+    #define WGL_STENCIL_BITS_ARB 0x2023
+    #define WGL_TYPE_RGBA_ARB 0x202B
+    #define WGL_CONTEXT_MAJOR_VERSION_ARB 0x2091
+    #define WGL_CONTEXT_MINOR_VERSION_ARB 0x2092
     //
-    // PFNWGLCHOOSEPIXELFORMATARBPROC wglChoosePixelFormat;
-    // PFNWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribs;
-    // // PFNWGLGETCURRENTCONTEXTARBPROC wglGetCurrentContext;
-    // // PFNWGLMAKECURRENTPROC wglMakeCurrent;
-    //
-    // // PFNGLACCUMPROC glAccum; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLACTIVETEXTUREPROC glActiveTexture;
-    // // PFNGLALPHAFUNCPROC glAlphaFunc; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLARETEXTURESRESIDENTPROC glAreTexturesResident;// defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLARRAYELEMENTPROC glArrayElement;// defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLATTACHSHADERPROC glAttachShader;
-    // // PFNGLBEGINPROC glBegin;// defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLBEGINCONDITIONALRENDERPROC glBeginConditionalRender;
-    // PFNGLBEGINQUERYPROC glBeginQuery;
-    // PFNGLBEGINTRANSFORMFEEDBACKPROC glBeginTransformFeedback;
-    // PFNGLBINDATTRIBLOCATIONPROC glBindAttribLocation;
-    // PFNGLBINDBUFFERPROC glBindBuffer;
-    // PFNGLBINDBUFFERBASEPROC glBindBufferBase;
-    // PFNGLBINDBUFFERRANGEPROC glBindBufferRange;
-    // PFNGLBINDFRAGDATALOCATIONPROC glBindFragDataLocation;
-    // PFNGLBINDFRAGDATALOCATIONINDEXEDPROC glBindFragDataLocationIndexed;
-    // PFNGLBINDFRAMEBUFFERPROC glBindFramebuffer;
-    // PFNGLBINDRENDERBUFFERPROC glBindRenderbuffer;
-    // PFNGLBINDSAMPLERPROC glBindSampler;
-    // // PFNGLBINDTEXTUREPROC glBindTexture;// defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLBINDVERTEXARRAYPROC glBindVertexArray;
-    // // PFNGLBITMAPPROC glBitmap;// defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLBLENDCOLORPROC glBlendColor;
-    // PFNGLBLENDEQUATIONPROC glBlendEquation;
-    // PFNGLBLENDEQUATIONSEPARATEPROC glBlendEquationSeparate;
-    // // PFNGLBLENDFUNCPROC glBlendFunc;// defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLBLENDFUNCSEPARATEPROC glBlendFuncSeparate;
-    // PFNGLBLITFRAMEBUFFERPROC glBlitFramebuffer;
-    // PFNGLBUFFERDATAPROC glBufferData;
-    // PFNGLBUFFERSUBDATAPROC glBufferSubData;
-    // // PFNGLCALLLISTPROC glCallList; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCALLLISTSPROC glCallLists; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLCHECKFRAMEBUFFERSTATUSPROC glCheckFramebufferStatus;
-    // PFNGLCLAMPCOLORPROC glClampColor;
-    // // PFNGLCLEARPROC glClear; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCLEARACCUMPROC glClearAccum; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLCLEARBUFFERFIPROC glClearBufferfi;
-    // PFNGLCLEARBUFFERFVPROC glClearBufferfv;
-    // PFNGLCLEARBUFFERIVPROC glClearBufferiv;
-    // PFNGLCLEARBUFFERUIVPROC glClearBufferuiv;
-    // // PFNGLCLEARCOLORPROC glClearColor; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCLEARDEPTHPROC glClearDepth; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCLEARINDEXPROC glClearIndex; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCLEARSTENCILPROC glClearStencil; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLCLIENTACTIVETEXTUREPROC glClientActiveTexture;
-    // PFNGLCLIENTWAITSYNCPROC glClientWaitSync;
-    // // PFNGLCLIPPLANEPROC glClipPlane; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR3BPROC glColor3b; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR3BVPROC glColor3bv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR3DPROC glColor3d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR3DVPROC glColor3dv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR3FPROC glColor3f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR3FVPROC glColor3fv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR3IPROC glColor3i; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR3IVPROC glColor3iv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR3SPROC glColor3s; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR3SVPROC glColor3sv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR3UBPROC glColor3ub; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR3UBVPROC glColor3ubv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR3UIPROC glColor3ui; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR3UIVPROC glColor3uiv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR3USPROC glColor3us; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR3USVPROC glColor3usv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR4BPROC glColor4b; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR4BVPROC glColor4bv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR4DPROC glColor4d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR4DVPROC glColor4dv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR4FPROC glColor4f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR4FVPROC glColor4fv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR4IPROC glColor4i; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR4IVPROC glColor4iv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR4SPROC glColor4s; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR4SVPROC glColor4sv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR4UBPROC glColor4ub; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR4UBVPROC glColor4ubv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR4UIPROC glColor4ui; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR4UIVPROC glColor4uiv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR4USPROC glColor4us; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLOR4USVPROC glColor4usv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLORMASKPROC glColorMask; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLORMASKIPROC glColorMaski; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOLORMATERIALPROC glColorMaterial; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLCOLORP3UIPROC glColorP3ui;
-    // PFNGLCOLORP3UIVPROC glColorP3uiv;
-    // PFNGLCOLORP4UIPROC glColorP4ui;
-    // PFNGLCOLORP4UIVPROC glColorP4uiv;
-    // // PFNGLCOLORPOINTERPROC glColorPointer; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLCOMPILESHADERPROC glCompileShader;
-    // PFNGLCOMPRESSEDTEXIMAGE1DPROC glCompressedTexImage1D;
-    // PFNGLCOMPRESSEDTEXIMAGE2DPROC glCompressedTexImage2D;
-    // PFNGLCOMPRESSEDTEXIMAGE3DPROC glCompressedTexImage3D;
-    // PFNGLCOMPRESSEDTEXSUBIMAGE1DPROC glCompressedTexSubImage1D;
-    // PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC glCompressedTexSubImage2D;
-    // PFNGLCOMPRESSEDTEXSUBIMAGE3DPROC glCompressedTexSubImage3D;
-    // PFNGLCOPYBUFFERSUBDATAPROC glCopyBufferSubData;
-    // // PFNGLCOPYPIXELSPROC glCopyPixels; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOPYTEXIMAGE1DPROC glCopyTexImage1D; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOPYTEXIMAGE2DPROC glCopyTexImage2D; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOPYTEXSUBIMAGE1DPROC glCopyTexSubImage1D; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLCOPYTEXSUBIMAGE2DPROC glCopyTexSubImage2D; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLCOPYTEXSUBIMAGE3DPROC glCopyTexSubImage3D;
-    // PFNGLCREATEPROGRAMPROC glCreateProgram;
-    // PFNGLCREATESHADERPROC glCreateShader;
-    // // PFNGLCULLFACEPROC glCullFace; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLDEBUGMESSAGECALLBACKPROC glDebugMessageCallback;
-    // PFNGLDEBUGMESSAGECONTROLPROC glDebugMessageControl;
-    // PFNGLDEBUGMESSAGEINSERTPROC glDebugMessageInsert;
-    // PFNGLDELETEBUFFERSPROC glDeleteBuffers;
-    // PFNGLDELETEFRAMEBUFFERSPROC glDeleteFramebuffers;
-    // // PFNGLDELETELISTSPROC glDeleteLists; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLDELETEPROGRAMPROC glDeleteProgram;
-    // PFNGLDELETEQUERIESPROC glDeleteQueries;
-    // PFNGLDELETERENDERBUFFERSPROC glDeleteRenderbuffers;
-    // PFNGLDELETESAMPLERSPROC glDeleteSamplers;
-    // PFNGLDELETESHADERPROC glDeleteShader;
-    // PFNGLDELETESYNCPROC glDeleteSync;
-    // // PFNGLDELETETEXTURESPROC glDeleteTextures; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLDELETEVERTEXARRAYSPROC glDeleteVertexArrays;
-    // // PFNGLDEPTHFUNCPROC glDepthFunc; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLDEPTHMASKPROC glDepthMask; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLDEPTHRANGEPROC glDepthRange; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLDETACHSHADERPROC glDetachShader;
-    // // PFNGLDISABLEPROC glDisable; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLDISABLECLIENTSTATEPROC glDisableClientState; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLDISABLEVERTEXATTRIBARRAYPROC glDisableVertexAttribArray;
-    // PFNGLDISABLEIPROC glDisablei;
-    // // PFNGLDRAWARRAYSPROC glDrawArrays; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLDRAWARRAYSINSTANCEDPROC glDrawArraysInstanced;
-    // // PFNGLDRAWBUFFERPROC glDrawBuffer; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLDRAWBUFFERSPROC glDrawBuffers;
-    // // PFNGLDRAWELEMENTSPROC glDrawElements; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLDRAWELEMENTSBASEVERTEXPROC glDrawElementsBaseVertex;
-    // PFNGLDRAWELEMENTSINSTANCEDPROC glDrawElementsInstanced;
-    // PFNGLDRAWELEMENTSINSTANCEDBASEVERTEXPROC glDrawElementsInstancedBaseVertex;
-    // // PFNGLDRAWPIXELSPROC glDrawPixels; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLDRAWRANGEELEMENTSPROC glDrawRangeElements;
-    // PFNGLDRAWRANGEELEMENTSBASEVERTEXPROC glDrawRangeElementsBaseVertex;
-    // // PFNGLEDGEFLAGPROC glEdgeFlag; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLEDGEFLAGPOINTERPROC glEdgeFlagPointer; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLEDGEFLAGVPROC glEdgeFlagv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLENABLEPROC glEnable; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLENABLECLIENTSTATEPROC glEnableClientState; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLENABLEVERTEXATTRIBARRAYPROC glEnableVertexAttribArray;
-    // PFNGLENABLEIPROC glEnablei;
-    // // PFNGLENDPROC glEnd; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLENDCONDITIONALRENDERPROC glEndConditionalRender;
-    // // PFNGLENDLISTPROC glEndList; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLENDQUERYPROC glEndQuery;
-    // PFNGLENDTRANSFORMFEEDBACKPROC glEndTransformFeedback;
-    // // PFNGLEVALCOORD1DPROC glEvalCoord1d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLEVALCOORD1DVPROC glEvalCoord1dv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLEVALCOORD1FPROC glEvalCoord1f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLEVALCOORD1FVPROC glEvalCoord1fv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLEVALCOORD2DPROC glEvalCoord2d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLEVALCOORD2DVPROC glEvalCoord2dv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLEVALCOORD2FPROC glEvalCoord2f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLEVALCOORD2FVPROC glEvalCoord2fv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLEVALMESH1PROC glEvalMesh1; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLEVALMESH2PROC glEvalMesh2; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLEVALPOINT1PROC glEvalPoint1; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLEVALPOINT2PROC glEvalPoint2; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLFEEDBACKBUFFERPROC glFeedbackBuffer; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLFENCESYNCPROC glFenceSync;
-    // // PFNGLFINISHPROC glFinish; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLFLUSHPROC glFlush; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLFLUSHMAPPEDBUFFERRANGEPROC glFlushMappedBufferRange;
-    // PFNGLFOGCOORDPOINTERPROC glFogCoordPointer;
-    // PFNGLFOGCOORDDPROC glFogCoordd;
-    // PFNGLFOGCOORDDVPROC glFogCoorddv;
-    // PFNGLFOGCOORDFPROC glFogCoordf;
-    // PFNGLFOGCOORDFVPROC glFogCoordfv;
-    // // PFNGLFOGFPROC glFogf; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLFOGFVPROC glFogfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLFOGIPROC glFogi; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLFOGIVPROC glFogiv; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLFRAMEBUFFERRENDERBUFFERPROC glFramebufferRenderbuffer;
-    // PFNGLFRAMEBUFFERTEXTUREPROC glFramebufferTexture;
-    // PFNGLFRAMEBUFFERTEXTURE1DPROC glFramebufferTexture1D;
-    // PFNGLFRAMEBUFFERTEXTURE2DPROC glFramebufferTexture2D;
-    // PFNGLFRAMEBUFFERTEXTURE3DPROC glFramebufferTexture3D;
-    // PFNGLFRAMEBUFFERTEXTURELAYERPROC glFramebufferTextureLayer;
-    // // PFNGLFRONTFACEPROC glFrontFace; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLFRUSTUMPROC glFrustum; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLGENBUFFERSPROC glGenBuffers;
-    // PFNGLGENFRAMEBUFFERSPROC glGenFramebuffers;
-    // // PFNGLGENLISTSPROC glGenLists; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLGENQUERIESPROC glGenQueries;
-    // PFNGLGENRENDERBUFFERSPROC glGenRenderbuffers;
-    // PFNGLGENSAMPLERSPROC glGenSamplers;
-    // // PFNGLGENTEXTURESPROC glGenTextures; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLGENVERTEXARRAYSPROC glGenVertexArrays;
-    // PFNGLGENERATEMIPMAPPROC glGenerateMipmap;
-    // PFNGLGETACTIVEATTRIBPROC glGetActiveAttrib;
-    // PFNGLGETACTIVEUNIFORMPROC glGetActiveUniform;
-    // PFNGLGETACTIVEUNIFORMBLOCKNAMEPROC glGetActiveUniformBlockName;
-    // PFNGLGETACTIVEUNIFORMBLOCKIVPROC glGetActiveUniformBlockiv;
-    // PFNGLGETACTIVEUNIFORMNAMEPROC glGetActiveUniformName;
-    // PFNGLGETACTIVEUNIFORMSIVPROC glGetActiveUniformsiv;
-    // PFNGLGETATTACHEDSHADERSPROC glGetAttachedShaders;
-    // PFNGLGETATTRIBLOCATIONPROC glGetAttribLocation;
-    // PFNGLGETBOOLEANI_VPROC glGetBooleani_v;
-    // // PFNGLGETBOOLEANVPROC glGetBooleanv; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLGETBUFFERPARAMETERI64VPROC glGetBufferParameteri64v;
-    // PFNGLGETBUFFERPARAMETERIVPROC glGetBufferParameteriv;
-    // PFNGLGETBUFFERPOINTERVPROC glGetBufferPointerv;
-    // PFNGLGETBUFFERSUBDATAPROC glGetBufferSubData;
-    // // PFNGLGETCLIPPLANEPROC glGetClipPlane; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLGETCOMPRESSEDTEXIMAGEPROC glGetCompressedTexImage;
-    // PFNGLGETDEBUGMESSAGELOGPROC glGetDebugMessageLog;
-    // // PFNGLGETDOUBLEVPROC glGetDoublev; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETERRORPROC glGetError; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETFLOATVPROC glGetFloatv; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLGETFRAGDATAINDEXPROC glGetFragDataIndex;
-    // PFNGLGETFRAGDATALOCATIONPROC glGetFragDataLocation;
-    // PFNGLGETFRAMEBUFFERATTACHMENTPARAMETERIVPROC glGetFramebufferAttachmentParameteriv;
-    // PFNGLGETGRAPHICSRESETSTATUSARBPROC glGetGraphicsResetStatusARB;
-    // PFNGLGETINTEGER64I_VPROC glGetInteger64i_v;
-    // PFNGLGETINTEGER64VPROC glGetInteger64v;
-    // PFNGLGETINTEGERI_VPROC glGetIntegeri_v;
-    // // PFNGLGETINTEGERVPROC glGetIntegerv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETLIGHTFVPROC glGetLightfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETLIGHTIVPROC glGetLightiv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETMAPDVPROC glGetMapdv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETMAPFVPROC glGetMapfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETMAPIVPROC glGetMapiv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETMATERIALFVPROC glGetMaterialfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETMATERIALIVPROC glGetMaterialiv; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLGETMULTISAMPLEFVPROC glGetMultisamplefv;
-    // PFNGLGETOBJECTLABELPROC glGetObjectLabel;
-    // PFNGLGETOBJECTPTRLABELPROC glGetObjectPtrLabel;
-    // // PFNGLGETPIXELMAPFVPROC glGetPixelMapfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETPIXELMAPUIVPROC glGetPixelMapuiv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETPIXELMAPUSVPROC glGetPixelMapusv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETPOINTERVPROC glGetPointerv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETPOLYGONSTIPPLEPROC glGetPolygonStipple; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLGETPROGRAMINFOLOGPROC glGetProgramInfoLog;
-    // PFNGLGETPROGRAMIVPROC glGetProgramiv;
-    // PFNGLGETQUERYOBJECTI64VPROC glGetQueryObjecti64v;
-    // PFNGLGETQUERYOBJECTIVPROC glGetQueryObjectiv;
-    // PFNGLGETQUERYOBJECTUI64VPROC glGetQueryObjectui64v;
-    // PFNGLGETQUERYOBJECTUIVPROC glGetQueryObjectuiv;
-    // PFNGLGETQUERYIVPROC glGetQueryiv;
-    // PFNGLGETRENDERBUFFERPARAMETERIVPROC glGetRenderbufferParameteriv;
-    // PFNGLGETSAMPLERPARAMETERIIVPROC glGetSamplerParameterIiv;
-    // PFNGLGETSAMPLERPARAMETERIUIVPROC glGetSamplerParameterIuiv;
-    // PFNGLGETSAMPLERPARAMETERFVPROC glGetSamplerParameterfv;
-    // PFNGLGETSAMPLERPARAMETERIVPROC glGetSamplerParameteriv;
-    // PFNGLGETSHADERINFOLOGPROC glGetShaderInfoLog;
-    // PFNGLGETSHADERSOURCEPROC glGetShaderSource;
-    // PFNGLGETSHADERIVPROC glGetShaderiv;
-    // // PFNGLGETSTRINGPROC glGetString; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLGETSTRINGIPROC glGetStringi;
-    // PFNGLGETSYNCIVPROC glGetSynciv;
-    // // PFNGLGETTEXENVFVPROC glGetTexEnvfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETTEXENVIVPROC glGetTexEnviv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETTEXGENDVPROC glGetTexGendv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETTEXGENFVPROC glGetTexGenfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETTEXGENIVPROC glGetTexGeniv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETTEXIMAGEPROC glGetTexImage; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETTEXLEVELPARAMETERFVPROC glGetTexLevelParameterfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETTEXLEVELPARAMETERIVPROC glGetTexLevelParameteriv; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLGETTEXPARAMETERIIVPROC glGetTexParameterIiv;
-    // PFNGLGETTEXPARAMETERIUIVPROC glGetTexParameterIuiv;
-    // // PFNGLGETTEXPARAMETERFVPROC glGetTexParameterfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLGETTEXPARAMETERIVPROC glGetTexParameteriv; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLGETTRANSFORMFEEDBACKVARYINGPROC glGetTransformFeedbackVarying;
-    // PFNGLGETUNIFORMBLOCKINDEXPROC glGetUniformBlockIndex;
-    // PFNGLGETUNIFORMINDICESPROC glGetUniformIndices;
-    // PFNGLGETUNIFORMLOCATIONPROC glGetUniformLocation;
-    // PFNGLGETUNIFORMFVPROC glGetUniformfv;
-    // PFNGLGETUNIFORMIVPROC glGetUniformiv;
-    // PFNGLGETUNIFORMUIVPROC glGetUniformuiv;
-    // PFNGLGETVERTEXATTRIBIIVPROC glGetVertexAttribIiv;
-    // PFNGLGETVERTEXATTRIBIUIVPROC glGetVertexAttribIuiv;
-    // PFNGLGETVERTEXATTRIBPOINTERVPROC glGetVertexAttribPointerv;
-    // PFNGLGETVERTEXATTRIBDVPROC glGetVertexAttribdv;
-    // PFNGLGETVERTEXATTRIBFVPROC glGetVertexAttribfv;
-    // PFNGLGETVERTEXATTRIBIVPROC glGetVertexAttribiv;
-    // PFNGLGETNCOLORTABLEARBPROC glGetnColorTableARB;
-    // PFNGLGETNCOMPRESSEDTEXIMAGEARBPROC glGetnCompressedTexImageARB;
-    // PFNGLGETNCONVOLUTIONFILTERARBPROC glGetnConvolutionFilterARB;
-    // PFNGLGETNHISTOGRAMARBPROC glGetnHistogramARB;
-    // PFNGLGETNMAPDVARBPROC glGetnMapdvARB;
-    // PFNGLGETNMAPFVARBPROC glGetnMapfvARB;
-    // PFNGLGETNMAPIVARBPROC glGetnMapivARB;
-    // PFNGLGETNMINMAXARBPROC glGetnMinmaxARB;
-    // PFNGLGETNPIXELMAPFVARBPROC glGetnPixelMapfvARB;
-    // PFNGLGETNPIXELMAPUIVARBPROC glGetnPixelMapuivARB;
-    // PFNGLGETNPIXELMAPUSVARBPROC glGetnPixelMapusvARB;
-    // PFNGLGETNPOLYGONSTIPPLEARBPROC glGetnPolygonStippleARB;
-    // PFNGLGETNSEPARABLEFILTERARBPROC glGetnSeparableFilterARB;
-    // PFNGLGETNTEXIMAGEARBPROC glGetnTexImageARB;
-    // PFNGLGETNUNIFORMDVARBPROC glGetnUniformdvARB;
-    // PFNGLGETNUNIFORMFVARBPROC glGetnUniformfvARB;
-    // PFNGLGETNUNIFORMIVARBPROC glGetnUniformivARB;
-    // PFNGLGETNUNIFORMUIVARBPROC glGetnUniformuivARB;
-    // // PFNGLHINTPROC glHint; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLINDEXMASKPROC glIndexMask; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLINDEXPOINTERPROC glIndexPointer; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLINDEXDPROC glIndexd; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLINDEXDVPROC glIndexdv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLINDEXFPROC glIndexf; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLINDEXFVPROC glIndexfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLINDEXIPROC glIndexi; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLINDEXIVPROC glIndexiv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLINDEXSPROC glIndexs; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLINDEXSVPROC glIndexsv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLINDEXUBPROC glIndexub; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLINDEXUBVPROC glIndexubv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLINITNAMESPROC glInitNames; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLINTERLEAVEDARRAYSPROC glInterleavedArrays; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLISBUFFERPROC glIsBuffer;
-    // // PFNGLISENABLEDPROC glIsEnabled; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLISENABLEDIPROC glIsEnabledi;
-    // PFNGLISFRAMEBUFFERPROC glIsFramebuffer;
-    // // PFNGLISLISTPROC glIsList; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLISPROGRAMPROC glIsProgram;
-    // PFNGLISQUERYPROC glIsQuery;
-    // PFNGLISRENDERBUFFERPROC glIsRenderbuffer;
-    // PFNGLISSAMPLERPROC glIsSampler;
-    // PFNGLISSHADERPROC glIsShader;
-    // PFNGLISSYNCPROC glIsSync;
-    // // PFNGLISTEXTUREPROC glIsTexture; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLISVERTEXARRAYPROC glIsVertexArray;
-    // // PFNGLLIGHTMODELFPROC glLightModelf; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLLIGHTMODELFVPROC glLightModelfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLLIGHTMODELIPROC glLightModeli; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLLIGHTMODELIVPROC glLightModeliv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLLIGHTFPROC glLightf; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLLIGHTFVPROC glLightfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLLIGHTIPROC glLighti; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLLIGHTIVPROC glLightiv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLLINESTIPPLEPROC glLineStipple; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLLINEWIDTHPROC glLineWidth; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLLINKPROGRAMPROC glLinkProgram;
-    // // PFNGLLISTBASEPROC glListBase; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLLOADIDENTITYPROC glLoadIdentity; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLLOADMATRIXDPROC glLoadMatrixd; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLLOADMATRIXFPROC glLoadMatrixf; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLLOADNAMEPROC glLoadName; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLLOADTRANSPOSEMATRIXDPROC glLoadTransposeMatrixd;
-    // PFNGLLOADTRANSPOSEMATRIXFPROC glLoadTransposeMatrixf;
-    // // PFNGLLOGICOPPROC glLogicOp; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLMAP1DPROC glMap1d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLMAP1FPROC glMap1f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLMAP2DPROC glMap2d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLMAP2FPROC glMap2f; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLMAPBUFFERPROC glMapBuffer;
-    // PFNGLMAPBUFFERRANGEPROC glMapBufferRange;
-    // // PFNGLMAPGRID1DPROC glMapGrid1d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLMAPGRID1FPROC glMapGrid1f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLMAPGRID2DPROC glMapGrid2d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLMAPGRID2FPROC glMapGrid2f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLMATERIALFPROC glMaterialf; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLMATERIALFVPROC glMaterialfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLMATERIALIPROC glMateriali; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLMATERIALIVPROC glMaterialiv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLMATRIXMODEPROC glMatrixMode; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLMULTMATRIXDPROC glMultMatrixd; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLMULTMATRIXFPROC glMultMatrixf; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLMULTTRANSPOSEMATRIXDPROC glMultTransposeMatrixd;
-    // PFNGLMULTTRANSPOSEMATRIXFPROC glMultTransposeMatrixf;
-    // PFNGLMULTIDRAWARRAYSPROC glMultiDrawArrays;
-    // PFNGLMULTIDRAWELEMENTSPROC glMultiDrawElements;
-    // PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC glMultiDrawElementsBaseVertex;
-    // PFNGLMULTITEXCOORD1DPROC glMultiTexCoord1d;
-    // PFNGLMULTITEXCOORD1DVPROC glMultiTexCoord1dv;
-    // PFNGLMULTITEXCOORD1FPROC glMultiTexCoord1f;
-    // PFNGLMULTITEXCOORD1FVPROC glMultiTexCoord1fv;
-    // PFNGLMULTITEXCOORD1IPROC glMultiTexCoord1i;
-    // PFNGLMULTITEXCOORD1IVPROC glMultiTexCoord1iv;
-    // PFNGLMULTITEXCOORD1SPROC glMultiTexCoord1s;
-    // PFNGLMULTITEXCOORD1SVPROC glMultiTexCoord1sv;
-    // PFNGLMULTITEXCOORD2DPROC glMultiTexCoord2d;
-    // PFNGLMULTITEXCOORD2DVPROC glMultiTexCoord2dv;
-    // PFNGLMULTITEXCOORD2FPROC glMultiTexCoord2f;
-    // PFNGLMULTITEXCOORD2FVPROC glMultiTexCoord2fv;
-    // PFNGLMULTITEXCOORD2IPROC glMultiTexCoord2i;
-    // PFNGLMULTITEXCOORD2IVPROC glMultiTexCoord2iv;
-    // PFNGLMULTITEXCOORD2SPROC glMultiTexCoord2s;
-    // PFNGLMULTITEXCOORD2SVPROC glMultiTexCoord2sv;
-    // PFNGLMULTITEXCOORD3DPROC glMultiTexCoord3d;
-    // PFNGLMULTITEXCOORD3DVPROC glMultiTexCoord3dv;
-    // PFNGLMULTITEXCOORD3FPROC glMultiTexCoord3f;
-    // PFNGLMULTITEXCOORD3FVPROC glMultiTexCoord3fv;
-    // PFNGLMULTITEXCOORD3IPROC glMultiTexCoord3i;
-    // PFNGLMULTITEXCOORD3IVPROC glMultiTexCoord3iv;
-    // PFNGLMULTITEXCOORD3SPROC glMultiTexCoord3s;
-    // PFNGLMULTITEXCOORD3SVPROC glMultiTexCoord3sv;
-    // PFNGLMULTITEXCOORD4DPROC glMultiTexCoord4d;
-    // PFNGLMULTITEXCOORD4DVPROC glMultiTexCoord4dv;
-    // PFNGLMULTITEXCOORD4FPROC glMultiTexCoord4f;
-    // PFNGLMULTITEXCOORD4FVPROC glMultiTexCoord4fv;
-    // PFNGLMULTITEXCOORD4IPROC glMultiTexCoord4i;
-    // PFNGLMULTITEXCOORD4IVPROC glMultiTexCoord4iv;
-    // PFNGLMULTITEXCOORD4SPROC glMultiTexCoord4s;
-    // PFNGLMULTITEXCOORD4SVPROC glMultiTexCoord4sv;
-    // PFNGLMULTITEXCOORDP1UIPROC glMultiTexCoordP1ui;
-    // PFNGLMULTITEXCOORDP1UIVPROC glMultiTexCoordP1uiv;
-    // PFNGLMULTITEXCOORDP2UIPROC glMultiTexCoordP2ui;
-    // PFNGLMULTITEXCOORDP2UIVPROC glMultiTexCoordP2uiv;
-    // PFNGLMULTITEXCOORDP3UIPROC glMultiTexCoordP3ui;
-    // PFNGLMULTITEXCOORDP3UIVPROC glMultiTexCoordP3uiv;
-    // PFNGLMULTITEXCOORDP4UIPROC glMultiTexCoordP4ui;
-    // PFNGLMULTITEXCOORDP4UIVPROC glMultiTexCoordP4uiv;
-    // // PFNGLNEWLISTPROC glNewList; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLNORMAL3BPROC glNormal3b; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLNORMAL3BVPROC glNormal3bv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLNORMAL3DPROC glNormal3d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLNORMAL3DVPROC glNormal3dv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLNORMAL3FPROC glNormal3f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLNORMAL3FVPROC glNormal3fv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLNORMAL3IPROC glNormal3i; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLNORMAL3IVPROC glNormal3iv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLNORMAL3SPROC glNormal3s; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLNORMAL3SVPROC glNormal3sv; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLNORMALP3UIPROC glNormalP3ui;
-    // PFNGLNORMALP3UIVPROC glNormalP3uiv;
-    // // PFNGLNORMALPOINTERPROC glNormalPointer; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLOBJECTLABELPROC glObjectLabel;
-    // PFNGLOBJECTPTRLABELPROC glObjectPtrLabel;
-    // // PFNGLORTHOPROC glOrtho; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPASSTHROUGHPROC glPassThrough; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPIXELMAPFVPROC glPixelMapfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPIXELMAPUIVPROC glPixelMapuiv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPIXELMAPUSVPROC glPixelMapusv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPIXELSTOREFPROC glPixelStoref; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPIXELSTOREIPROC glPixelStorei; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPIXELTRANSFERFPROC glPixelTransferf; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPIXELTRANSFERIPROC glPixelTransferi; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPIXELZOOMPROC glPixelZoom; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLPOINTPARAMETERFPROC glPointParameterf;
-    // PFNGLPOINTPARAMETERFVPROC glPointParameterfv;
-    // PFNGLPOINTPARAMETERIPROC glPointParameteri;
-    // PFNGLPOINTPARAMETERIVPROC glPointParameteriv;
-    // // PFNGLPOINTSIZEPROC glPointSize; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPOLYGONMODEPROC glPolygonMode; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPOLYGONOFFSETPROC glPolygonOffset; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPOLYGONSTIPPLEPROC glPolygonStipple; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPOPATTRIBPROC glPopAttrib; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPOPCLIENTATTRIBPROC glPopClientAttrib; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLPOPDEBUGGROUPPROC glPopDebugGroup;
-    // // PFNGLPOPMATRIXPROC glPopMatrix; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPOPNAMEPROC glPopName; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLPRIMITIVERESTARTINDEXPROC glPrimitiveRestartIndex;
-    // // PFNGLPRIORITIZETEXTURESPROC glPrioritizeTextures; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLPROVOKINGVERTEXPROC glProvokingVertex;
-    // // PFNGLPUSHATTRIBPROC glPushAttrib; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPUSHCLIENTATTRIBPROC glPushClientAttrib; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLPUSHDEBUGGROUPPROC glPushDebugGroup;
-    // // PFNGLPUSHMATRIXPROC glPushMatrix; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLPUSHNAMEPROC glPushName; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLQUERYCOUNTERPROC glQueryCounter;
-    // // PFNGLRASTERPOS2DPROC glRasterPos2d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS2DVPROC glRasterPos2dv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS2FPROC glRasterPos2f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS2FVPROC glRasterPos2fv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS2IPROC glRasterPos2i; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS2IVPROC glRasterPos2iv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS2SPROC glRasterPos2s; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS2SVPROC glRasterPos2sv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS3DPROC glRasterPos3d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS3DVPROC glRasterPos3dv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS3FPROC glRasterPos3f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS3FVPROC glRasterPos3fv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS3IPROC glRasterPos3i; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS3IVPROC glRasterPos3iv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS3SPROC glRasterPos3s; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS3SVPROC glRasterPos3sv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS4DPROC glRasterPos4d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS4DVPROC glRasterPos4dv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS4FPROC glRasterPos4f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS4FVPROC glRasterPos4fv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS4IPROC glRasterPos4i; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS4IVPROC glRasterPos4iv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS4SPROC glRasterPos4s; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRASTERPOS4SVPROC glRasterPos4sv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLREADBUFFERPROC glReadBuffer; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLREADPIXELSPROC glReadPixels; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLREADNPIXELSPROC glReadnPixels;
-    // PFNGLREADNPIXELSARBPROC glReadnPixelsARB;
-    // // PFNGLRECTDPROC glRectd; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRECTDVPROC glRectdv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRECTFPROC glRectf; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRECTFVPROC glRectfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRECTIPROC glRecti; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRECTIVPROC glRectiv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRECTSPROC glRects; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRECTSVPROC glRectsv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLRENDERMODEPROC glRenderMode; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLRENDERBUFFERSTORAGEPROC glRenderbufferStorage;
-    // PFNGLRENDERBUFFERSTORAGEMULTISAMPLEPROC glRenderbufferStorageMultisample;
-    // // PFNGLROTATEDPROC glRotated; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLROTATEFPROC glRotatef; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLSAMPLECOVERAGEPROC glSampleCoverage;
-    // PFNGLSAMPLECOVERAGEARBPROC glSampleCoverageARB;
-    // PFNGLSAMPLEMASKIPROC glSampleMaski;
-    // PFNGLSAMPLERPARAMETERIIVPROC glSamplerParameterIiv;
-    // PFNGLSAMPLERPARAMETERIUIVPROC glSamplerParameterIuiv;
-    // PFNGLSAMPLERPARAMETERFPROC glSamplerParameterf;
-    // PFNGLSAMPLERPARAMETERFVPROC glSamplerParameterfv;
-    // PFNGLSAMPLERPARAMETERIPROC glSamplerParameteri;
-    // PFNGLSAMPLERPARAMETERIVPROC glSamplerParameteriv;
-    // // PFNGLSCALEDPROC glScaled; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLSCALEFPROC glScalef; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLSCISSORPROC glScissor; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLSECONDARYCOLOR3BPROC glSecondaryColor3b;
-    // PFNGLSECONDARYCOLOR3BVPROC glSecondaryColor3bv;
-    // PFNGLSECONDARYCOLOR3DPROC glSecondaryColor3d;
-    // PFNGLSECONDARYCOLOR3DVPROC glSecondaryColor3dv;
-    // PFNGLSECONDARYCOLOR3FPROC glSecondaryColor3f;
-    // PFNGLSECONDARYCOLOR3FVPROC glSecondaryColor3fv;
-    // PFNGLSECONDARYCOLOR3IPROC glSecondaryColor3i;
-    // PFNGLSECONDARYCOLOR3IVPROC glSecondaryColor3iv;
-    // PFNGLSECONDARYCOLOR3SPROC glSecondaryColor3s;
-    // PFNGLSECONDARYCOLOR3SVPROC glSecondaryColor3sv;
-    // PFNGLSECONDARYCOLOR3UBPROC glSecondaryColor3ub;
-    // PFNGLSECONDARYCOLOR3UBVPROC glSecondaryColor3ubv;
-    // PFNGLSECONDARYCOLOR3UIPROC glSecondaryColor3ui;
-    // PFNGLSECONDARYCOLOR3UIVPROC glSecondaryColor3uiv;
-    // PFNGLSECONDARYCOLOR3USPROC glSecondaryColor3us;
-    // PFNGLSECONDARYCOLOR3USVPROC glSecondaryColor3usv;
-    // PFNGLSECONDARYCOLORP3UIPROC glSecondaryColorP3ui;
-    // PFNGLSECONDARYCOLORP3UIVPROC glSecondaryColorP3uiv;
-    // PFNGLSECONDARYCOLORPOINTERPROC glSecondaryColorPointer;
-    // // PFNGLSELECTBUFFERPROC glSelectBuffer; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLSHADEMODELPROC glShadeModel; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLSHADERSOURCEPROC glShaderSource;
-    // // PFNGLSTENCILFUNCPROC glStencilFunc; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLSTENCILFUNCSEPARATEPROC glStencilFuncSeparate;
-    // // PFNGLSTENCILMASKPROC glStencilMask; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLSTENCILMASKSEPARATEPROC glStencilMaskSeparate;
-    // // PFNGLSTENCILOPPROC glStencilOp; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLSTENCILOPSEPARATEPROC glStencilOpSeparate;
-    // PFNGLTEXBUFFERPROC glTexBuffer;
-    // // PFNGLTEXCOORD1DPROC glTexCoord1d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD1DVPROC glTexCoord1dv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD1FPROC glTexCoord1f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD1FVPROC glTexCoord1fv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD1IPROC glTexCoord1i; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD1IVPROC glTexCoord1iv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD1SPROC glTexCoord1s; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD1SVPROC glTexCoord1sv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD2DPROC glTexCoord2d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD2DVPROC glTexCoord2dv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD2FPROC glTexCoord2f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD2FVPROC glTexCoord2fv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD2IPROC glTexCoord2i; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD2IVPROC glTexCoord2iv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD2SPROC glTexCoord2s; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD2SVPROC glTexCoord2sv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD3DPROC glTexCoord3d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD3DVPROC glTexCoord3dv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD3FPROC glTexCoord3f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD3FVPROC glTexCoord3fv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD3IPROC glTexCoord3i; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD3IVPROC glTexCoord3iv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD3SPROC glTexCoord3s; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD3SVPROC glTexCoord3sv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD4DPROC glTexCoord4d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD4DVPROC glTexCoord4dv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD4FPROC glTexCoord4f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD4FVPROC glTexCoord4fv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD4IPROC glTexCoord4i; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD4IVPROC glTexCoord4iv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD4SPROC glTexCoord4s; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXCOORD4SVPROC glTexCoord4sv; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLTEXCOORDP1UIPROC glTexCoordP1ui;
-    // PFNGLTEXCOORDP1UIVPROC glTexCoordP1uiv;
-    // PFNGLTEXCOORDP2UIPROC glTexCoordP2ui;
-    // PFNGLTEXCOORDP2UIVPROC glTexCoordP2uiv;
-    // PFNGLTEXCOORDP3UIPROC glTexCoordP3ui;
-    // PFNGLTEXCOORDP3UIVPROC glTexCoordP3uiv;
-    // PFNGLTEXCOORDP4UIPROC glTexCoordP4ui;
-    // PFNGLTEXCOORDP4UIVPROC glTexCoordP4uiv;
-    // // PFNGLTEXCOORDPOINTERPROC glTexCoordPointer; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXENVFPROC glTexEnvf; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXENVFVPROC glTexEnvfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXENVIPROC glTexEnvi; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXENVIVPROC glTexEnviv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXGENDPROC glTexGend; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXGENDVPROC glTexGendv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXGENFPROC glTexGenf; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXGENFVPROC glTexGenfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXGENIPROC glTexGeni; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXGENIVPROC glTexGeniv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXIMAGE1DPROC glTexImage1D; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXIMAGE2DPROC glTexImage2D; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLTEXIMAGE2DMULTISAMPLEPROC glTexImage2DMultisample;
-    // PFNGLTEXIMAGE3DPROC glTexImage3D;
-    // PFNGLTEXIMAGE3DMULTISAMPLEPROC glTexImage3DMultisample;
-    // PFNGLTEXPARAMETERIIVPROC glTexParameterIiv;
-    // PFNGLTEXPARAMETERIUIVPROC glTexParameterIuiv;
-    // // PFNGLTEXPARAMETERFPROC glTexParameterf; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXPARAMETERFVPROC glTexParameterfv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXPARAMETERIPROC glTexParameteri; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXPARAMETERIVPROC glTexParameteriv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXSUBIMAGE1DPROC glTexSubImage1D; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTEXSUBIMAGE2DPROC glTexSubImage2D; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLTEXSUBIMAGE3DPROC glTexSubImage3D;
-    // PFNGLTRANSFORMFEEDBACKVARYINGSPROC glTransformFeedbackVaryings;
-    // // PFNGLTRANSLATEDPROC glTranslated; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLTRANSLATEFPROC glTranslatef; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLUNIFORM1FPROC glUniform1f;
-    // PFNGLUNIFORM1FVPROC glUniform1fv;
-    // PFNGLUNIFORM1IPROC glUniform1i;
-    // PFNGLUNIFORM1IVPROC glUniform1iv;
-    // PFNGLUNIFORM1UIPROC glUniform1ui;
-    // PFNGLUNIFORM1UIVPROC glUniform1uiv;
-    // PFNGLUNIFORM2FPROC glUniform2f;
-    // PFNGLUNIFORM2FVPROC glUniform2fv;
-    // PFNGLUNIFORM2IPROC glUniform2i;
-    // PFNGLUNIFORM2IVPROC glUniform2iv;
-    // PFNGLUNIFORM2UIPROC glUniform2ui;
-    // PFNGLUNIFORM2UIVPROC glUniform2uiv;
-    // PFNGLUNIFORM3FPROC glUniform3f;
-    // PFNGLUNIFORM3FVPROC glUniform3fv;
-    // PFNGLUNIFORM3IPROC glUniform3i;
-    // PFNGLUNIFORM3IVPROC glUniform3iv;
-    // PFNGLUNIFORM3UIPROC glUniform3ui;
-    // PFNGLUNIFORM3UIVPROC glUniform3uiv;
-    // PFNGLUNIFORM4FPROC glUniform4f;
-    // PFNGLUNIFORM4FVPROC glUniform4fv;
-    // PFNGLUNIFORM4IPROC glUniform4i;
-    // PFNGLUNIFORM4IVPROC glUniform4iv;
-    // PFNGLUNIFORM4UIPROC glUniform4ui;
-    // PFNGLUNIFORM4UIVPROC glUniform4uiv;
-    // PFNGLUNIFORMBLOCKBINDINGPROC glUniformBlockBinding;
-    // PFNGLUNIFORMMATRIX2FVPROC glUniformMatrix2fv;
-    // PFNGLUNIFORMMATRIX2X3FVPROC glUniformMatrix2x3fv;
-    // PFNGLUNIFORMMATRIX2X4FVPROC glUniformMatrix2x4fv;
-    // PFNGLUNIFORMMATRIX3FVPROC glUniformMatrix3fv;
-    // PFNGLUNIFORMMATRIX3X2FVPROC glUniformMatrix3x2fv;
-    // PFNGLUNIFORMMATRIX3X4FVPROC glUniformMatrix3x4fv;
-    // PFNGLUNIFORMMATRIX4FVPROC glUniformMatrix4fv;
-    // PFNGLUNIFORMMATRIX4X2FVPROC glUniformMatrix4x2fv;
-    // PFNGLUNIFORMMATRIX4X3FVPROC glUniformMatrix4x3fv;
-    // PFNGLUNMAPBUFFERPROC glUnmapBuffer;
-    // PFNGLUSEPROGRAMPROC glUseProgram;
-    // PFNGLVALIDATEPROGRAMPROC glValidateProgram;
-    // // PFNGLVERTEX2DPROC glVertex2d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX2DVPROC glVertex2dv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX2FPROC glVertex2f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX2FVPROC glVertex2fv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX2IPROC glVertex2i; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX2IVPROC glVertex2iv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX2SPROC glVertex2s; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX2SVPROC glVertex2sv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX3DPROC glVertex3d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX3DVPROC glVertex3dv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX3FPROC glVertex3f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX3FVPROC glVertex3fv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX3IPROC glVertex3i; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX3IVPROC glVertex3iv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX3SPROC glVertex3s; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX3SVPROC glVertex3sv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX4DPROC glVertex4d; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX4DVPROC glVertex4dv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX4FPROC glVertex4f; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX4FVPROC glVertex4fv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX4IPROC glVertex4i; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX4IVPROC glVertex4iv; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX4SPROC glVertex4s; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVERTEX4SVPROC glVertex4sv; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLVERTEXATTRIB1DPROC glVertexAttrib1d;
-    // PFNGLVERTEXATTRIB1DVPROC glVertexAttrib1dv;
-    // PFNGLVERTEXATTRIB1FPROC glVertexAttrib1f;
-    // PFNGLVERTEXATTRIB1FVPROC glVertexAttrib1fv;
-    // PFNGLVERTEXATTRIB1SPROC glVertexAttrib1s;
-    // PFNGLVERTEXATTRIB1SVPROC glVertexAttrib1sv;
-    // PFNGLVERTEXATTRIB2DPROC glVertexAttrib2d;
-    // PFNGLVERTEXATTRIB2DVPROC glVertexAttrib2dv;
-    // PFNGLVERTEXATTRIB2FPROC glVertexAttrib2f;
-    // PFNGLVERTEXATTRIB2FVPROC glVertexAttrib2fv;
-    // PFNGLVERTEXATTRIB2SPROC glVertexAttrib2s;
-    // PFNGLVERTEXATTRIB2SVPROC glVertexAttrib2sv;
-    // PFNGLVERTEXATTRIB3DPROC glVertexAttrib3d;
-    // PFNGLVERTEXATTRIB3DVPROC glVertexAttrib3dv;
-    // PFNGLVERTEXATTRIB3FPROC glVertexAttrib3f;
-    // PFNGLVERTEXATTRIB3FVPROC glVertexAttrib3fv;
-    // PFNGLVERTEXATTRIB3SPROC glVertexAttrib3s;
-    // PFNGLVERTEXATTRIB3SVPROC glVertexAttrib3sv;
-    // PFNGLVERTEXATTRIB4NBVPROC glVertexAttrib4Nbv;
-    // PFNGLVERTEXATTRIB4NIVPROC glVertexAttrib4Niv;
-    // PFNGLVERTEXATTRIB4NSVPROC glVertexAttrib4Nsv;
-    // PFNGLVERTEXATTRIB4NUBPROC glVertexAttrib4Nub;
-    // PFNGLVERTEXATTRIB4NUBVPROC glVertexAttrib4Nubv;
-    // PFNGLVERTEXATTRIB4NUIVPROC glVertexAttrib4Nuiv;
-    // PFNGLVERTEXATTRIB4NUSVPROC glVertexAttrib4Nusv;
-    // PFNGLVERTEXATTRIB4BVPROC glVertexAttrib4bv;
-    // PFNGLVERTEXATTRIB4DPROC glVertexAttrib4d;
-    // PFNGLVERTEXATTRIB4DVPROC glVertexAttrib4dv;
-    // PFNGLVERTEXATTRIB4FPROC glVertexAttrib4f;
-    // PFNGLVERTEXATTRIB4FVPROC glVertexAttrib4fv;
-    // PFNGLVERTEXATTRIB4IVPROC glVertexAttrib4iv;
-    // PFNGLVERTEXATTRIB4SPROC glVertexAttrib4s;
-    // PFNGLVERTEXATTRIB4SVPROC glVertexAttrib4sv;
-    // PFNGLVERTEXATTRIB4UBVPROC glVertexAttrib4ubv;
-    // PFNGLVERTEXATTRIB4UIVPROC glVertexAttrib4uiv;
-    // PFNGLVERTEXATTRIB4USVPROC glVertexAttrib4usv;
-    // PFNGLVERTEXATTRIBDIVISORPROC glVertexAttribDivisor;
-    // PFNGLVERTEXATTRIBI1IPROC glVertexAttribI1i;
-    // PFNGLVERTEXATTRIBI1IVPROC glVertexAttribI1iv;
-    // PFNGLVERTEXATTRIBI1UIPROC glVertexAttribI1ui;
-    // PFNGLVERTEXATTRIBI1UIVPROC glVertexAttribI1uiv;
-    // PFNGLVERTEXATTRIBI2IPROC glVertexAttribI2i;
-    // PFNGLVERTEXATTRIBI2IVPROC glVertexAttribI2iv;
-    // PFNGLVERTEXATTRIBI2UIPROC glVertexAttribI2ui;
-    // PFNGLVERTEXATTRIBI2UIVPROC glVertexAttribI2uiv;
-    // PFNGLVERTEXATTRIBI3IPROC glVertexAttribI3i;
-    // PFNGLVERTEXATTRIBI3IVPROC glVertexAttribI3iv;
-    // PFNGLVERTEXATTRIBI3UIPROC glVertexAttribI3ui;
-    // PFNGLVERTEXATTRIBI3UIVPROC glVertexAttribI3uiv;
-    // PFNGLVERTEXATTRIBI4BVPROC glVertexAttribI4bv;
-    // PFNGLVERTEXATTRIBI4IPROC glVertexAttribI4i;
-    // PFNGLVERTEXATTRIBI4IVPROC glVertexAttribI4iv;
-    // PFNGLVERTEXATTRIBI4SVPROC glVertexAttribI4sv;
-    // PFNGLVERTEXATTRIBI4UBVPROC glVertexAttribI4ubv;
-    // PFNGLVERTEXATTRIBI4UIPROC glVertexAttribI4ui;
-    // PFNGLVERTEXATTRIBI4UIVPROC glVertexAttribI4uiv;
-    // PFNGLVERTEXATTRIBI4USVPROC glVertexAttribI4usv;
-    // PFNGLVERTEXATTRIBIPOINTERPROC glVertexAttribIPointer;
-    // PFNGLVERTEXATTRIBP1UIPROC glVertexAttribP1ui;
-    // PFNGLVERTEXATTRIBP1UIVPROC glVertexAttribP1uiv;
-    // PFNGLVERTEXATTRIBP2UIPROC glVertexAttribP2ui;
-    // PFNGLVERTEXATTRIBP2UIVPROC glVertexAttribP2uiv;
-    // PFNGLVERTEXATTRIBP3UIPROC glVertexAttribP3ui;
-    // PFNGLVERTEXATTRIBP3UIVPROC glVertexAttribP3uiv;
-    // PFNGLVERTEXATTRIBP4UIPROC glVertexAttribP4ui;
-    // PFNGLVERTEXATTRIBP4UIVPROC glVertexAttribP4uiv;
-    // PFNGLVERTEXATTRIBPOINTERPROC glVertexAttribPointer;
-    // PFNGLVERTEXP2UIPROC glVertexP2ui;
-    // PFNGLVERTEXP2UIVPROC glVertexP2uiv;
-    // PFNGLVERTEXP3UIPROC glVertexP3ui;
-    // PFNGLVERTEXP3UIVPROC glVertexP3uiv;
-    // PFNGLVERTEXP4UIPROC glVertexP4ui;
-    // PFNGLVERTEXP4UIVPROC glVertexP4uiv;
-    // // PFNGLVERTEXPOINTERPROC glVertexPointer; // defined in GL/gl.h for v1.0 & v1.1
-    // // PFNGLVIEWPORTPROC glViewport; // defined in GL/gl.h for v1.0 & v1.1
-    // PFNGLWAITSYNCPROC glWaitSync;
-    // PFNGLWINDOWPOS2DPROC glWindowPos2d;
-    // PFNGLWINDOWPOS2DVPROC glWindowPos2dv;
-    // PFNGLWINDOWPOS2FPROC glWindowPos2f;
-    // PFNGLWINDOWPOS2FVPROC glWindowPos2fv;
-    // PFNGLWINDOWPOS2IPROC glWindowPos2i;
-    // PFNGLWINDOWPOS2IVPROC glWindowPos2iv;
-    // PFNGLWINDOWPOS2SPROC glWindowPos2s;
-    // PFNGLWINDOWPOS2SVPROC glWindowPos2sv;
-    // PFNGLWINDOWPOS3DPROC glWindowPos3d;
-    // PFNGLWINDOWPOS3DVPROC glWindowPos3dv;
-    // PFNGLWINDOWPOS3FPROC glWindowPos3f;
-    // PFNGLWINDOWPOS3FVPROC glWindowPos3fv;
-    // PFNGLWINDOWPOS3IPROC glWindowPos3i;
-    // PFNGLWINDOWPOS3IVPROC glWindowPos3iv;
-    // PFNGLWINDOWPOS3SPROC glWindowPos3s;
-    // PFNGLWINDOWPOS3SVPROC glWindowPos3sv;
-    // //opengl 4.0
-    // PFNGLMINSAMPLESHADINGPROC glMinSampleShading;
-  	// PFNGLBLENDEQUATIONIPROC glBlendEquationi;
-  	// PFNGLBLENDEQUATIONSEPARATEIPROC glBlendEquationSeparatei;
-  	// PFNGLBLENDFUNCIPROC glBlendFunci;
-  	// PFNGLBLENDFUNCSEPARATEIPROC glBlendFuncSeparatei;
-  	// PFNGLDRAWARRAYSINDIRECTPROC glDrawArraysIndirect;
-  	// PFNGLDRAWELEMENTSINDIRECTPROC glDrawElementsIndirect;
-  	// PFNGLUNIFORM1DPROC glUniform1d;
-  	// PFNGLUNIFORM2DPROC glUniform2d;
-  	// PFNGLUNIFORM3DPROC glUniform3d;
-  	// PFNGLUNIFORM4DPROC glUniform4d;
-  	// PFNGLUNIFORM1DVPROC glUniform1dv;
-  	// PFNGLUNIFORM2DVPROC glUniform2dv;
-  	// PFNGLUNIFORM3DVPROC glUniform3dv;
-  	// PFNGLUNIFORM4DVPROC glUniform4dv;
-  	// PFNGLUNIFORMMATRIX2DVPROC glUniformMatrix2dv;
-  	// PFNGLUNIFORMMATRIX3DVPROC glUniformMatrix3dv;
-  	// PFNGLUNIFORMMATRIX4DVPROC glUniformMatrix4dv;
-  	// PFNGLUNIFORMMATRIX2X3DVPROC glUniformMatrix2x3dv;
-  	// PFNGLUNIFORMMATRIX2X4DVPROC glUniformMatrix2x4dv;
-  	// PFNGLUNIFORMMATRIX3X2DVPROC glUniformMatrix3x2dv;
-  	// PFNGLUNIFORMMATRIX3X4DVPROC glUniformMatrix3x4dv;
-  	// PFNGLUNIFORMMATRIX4X2DVPROC glUniformMatrix4x2dv;
-  	// PFNGLUNIFORMMATRIX4X3DVPROC glUniformMatrix4x3dv;
-  	// PFNGLGETUNIFORMDVPROC glGetUniformdv;
-  	// PFNGLGETSUBROUTINEUNIFORMLOCATIONPROC glGetSubroutineUniformLocation;
-  	// PFNGLGETSUBROUTINEINDEXPROC glGetSubroutineIndex;
-  	// PFNGLGETACTIVESUBROUTINEUNIFORMIVPROC glGetActiveSubroutineUniformiv;
-  	// PFNGLGETACTIVESUBROUTINEUNIFORMNAMEPROC glGetActiveSubroutineUniformName;
-  	// PFNGLGETACTIVESUBROUTINENAMEPROC glGetActiveSubroutineName;
-  	// PFNGLUNIFORMSUBROUTINESUIVPROC glUniformSubroutinesuiv;
-  	// PFNGLGETUNIFORMSUBROUTINEUIVPROC glGetUniformSubroutineuiv;
-  	// PFNGLGETPROGRAMSTAGEIVPROC glGetProgramStageiv;
-  	// PFNGLPATCHPARAMETERIPROC glPatchParameteri;
-  	// PFNGLPATCHPARAMETERFVPROC glPatchParameterfv;
-  	// PFNGLBINDTRANSFORMFEEDBACKPROC glBindTransformFeedback;
-  	// PFNGLDELETETRANSFORMFEEDBACKSPROC glDeleteTransformFeedbacks;
-  	// PFNGLGENTRANSFORMFEEDBACKSPROC glGenTransformFeedbacks;
-  	// PFNGLISTRANSFORMFEEDBACKPROC glIsTransformFeedback;
-  	// PFNGLPAUSETRANSFORMFEEDBACKPROC glPauseTransformFeedback;
-  	// PFNGLRESUMETRANSFORMFEEDBACKPROC glResumeTransformFeedback;
-  	// PFNGLDRAWTRANSFORMFEEDBACKPROC glDrawTransformFeedback;
-  	// PFNGLDRAWTRANSFORMFEEDBACKSTREAMPROC glDrawTransformFeedbackStream;
-  	// PFNGLBEGINQUERYINDEXEDPROC glBeginQueryIndexed;
-  	// PFNGLENDQUERYINDEXEDPROC glEndQueryIndexed;
-  	// PFNGLGETQUERYINDEXEDIVPROC glGetQueryIndexediv;
-    //
-    // //opengl 4.1
-    // PFNGLRELEASESHADERCOMPILERPROC glReleaseShaderCompiler;
-  	// PFNGLSHADERBINARYPROC glShaderBinary;
-  	// PFNGLGETSHADERPRECISIONFORMATPROC glGetShaderPrecisionFormat;
-  	// PFNGLDEPTHRANGEFPROC glDepthRangef;
-  	// PFNGLCLEARDEPTHFPROC glClearDepthf;
-  	// PFNGLGETPROGRAMBINARYPROC glGetProgramBinary;
-  	// PFNGLPROGRAMBINARYPROC glProgramBinary;
-  	// PFNGLPROGRAMPARAMETERIPROC glProgramParameteri;
-  	// PFNGLUSEPROGRAMSTAGESPROC glUseProgramStages;
-  	// PFNGLACTIVESHADERPROGRAMPROC glActiveShaderProgram;
-  	// PFNGLCREATESHADERPROGRAMVPROC glCreateShaderProgramv;
-  	// PFNGLBINDPROGRAMPIPELINEPROC glBindProgramPipeline;
-  	// PFNGLDELETEPROGRAMPIPELINESPROC glDeleteProgramPipelines;
-  	// PFNGLGENPROGRAMPIPELINESPROC glGenProgramPipelines;
-  	// PFNGLISPROGRAMPIPELINEPROC glIsProgramPipeline;
-  	// PFNGLGETPROGRAMPIPELINEIVPROC glGetProgramPipelineiv;
-  	// PFNGLPROGRAMPARAMETERIPROC glProgramParameteri;
-  	// PFNGLPROGRAMUNIFORM1IPROC glProgramUniform1i;
-  	// PFNGLPROGRAMUNIFORM1IVPROC glProgramUniform1iv;
-  	// PFNGLPROGRAMUNIFORM1FPROC glProgramUniform1f;
-  	// PFNGLPROGRAMUNIFORM1FVPROC glProgramUniform1fv;
-  	// PFNGLPROGRAMUNIFORM1DPROC glProgramUniform1d;
-  	// PFNGLPROGRAMUNIFORM1DVPROC glProgramUniform1dv;
-  	// PFNGLPROGRAMUNIFORM1UIPROC glProgramUniform1ui;
-  	// PFNGLPROGRAMUNIFORM1UIVPROC glProgramUniform1uiv;
-  	// PFNGLPROGRAMUNIFORM2IPROC glProgramUniform2i;
-  	// PFNGLPROGRAMUNIFORM2IVPROC glProgramUniform2iv;
-  	// PFNGLPROGRAMUNIFORM2FPROC glProgramUniform2f;
-  	// PFNGLPROGRAMUNIFORM2FVPROC glProgramUniform2fv;
-  	// PFNGLPROGRAMUNIFORM2DPROC glProgramUniform2d;
-  	// PFNGLPROGRAMUNIFORM2DVPROC glProgramUniform2dv;
-  	// PFNGLPROGRAMUNIFORM2UIPROC glProgramUniform2ui;
-  	// PFNGLPROGRAMUNIFORM2UIVPROC glProgramUniform2uiv;
-  	// PFNGLPROGRAMUNIFORM3IPROC glProgramUniform3i;
-  	// PFNGLPROGRAMUNIFORM3IVPROC glProgramUniform3iv;
-  	// PFNGLPROGRAMUNIFORM3FPROC glProgramUniform3f;
-  	// PFNGLPROGRAMUNIFORM3FVPROC glProgramUniform3fv;
-  	// PFNGLPROGRAMUNIFORM3DPROC glProgramUniform3d;
-  	// PFNGLPROGRAMUNIFORM3DVPROC glProgramUniform3dv;
-  	// PFNGLPROGRAMUNIFORM3UIPROC glProgramUniform3ui;
-  	// PFNGLPROGRAMUNIFORM3UIVPROC glProgramUniform3uiv;
-  	// PFNGLPROGRAMUNIFORM4IPROC glProgramUniform4i;
-  	// PFNGLPROGRAMUNIFORM4IVPROC glProgramUniform4iv;
-  	// PFNGLPROGRAMUNIFORM4FPROC glProgramUniform4f;
-  	// PFNGLPROGRAMUNIFORM4FVPROC glProgramUniform4fv;
-  	// PFNGLPROGRAMUNIFORM4DPROC glProgramUniform4d;
-  	// PFNGLPROGRAMUNIFORM4DVPROC glProgramUniform4dv;
-  	// PFNGLPROGRAMUNIFORM4UIPROC glProgramUniform4ui;
-  	// PFNGLPROGRAMUNIFORM4UIVPROC glProgramUniform4uiv;
-  	// PFNGLPROGRAMUNIFORMMATRIX2FVPROC glProgramUniformMatrix2fv;
-  	// PFNGLPROGRAMUNIFORMMATRIX3FVPROC glProgramUniformMatrix3fv;
-  	// PFNGLPROGRAMUNIFORMMATRIX4FVPROC glProgramUniformMatrix4fv;
-  	// PFNGLPROGRAMUNIFORMMATRIX2DVPROC glProgramUniformMatrix2dv;
-  	// PFNGLPROGRAMUNIFORMMATRIX3DVPROC glProgramUniformMatrix3dv;
-  	// PFNGLPROGRAMUNIFORMMATRIX4DVPROC glProgramUniformMatrix4dv;
-  	// PFNGLPROGRAMUNIFORMMATRIX2X3FVPROC glProgramUniformMatrix2x3fv;
-  	// PFNGLPROGRAMUNIFORMMATRIX3X2FVPROC glProgramUniformMatrix3x2fv;
-  	// PFNGLPROGRAMUNIFORMMATRIX2X4FVPROC glProgramUniformMatrix2x4fv;
-  	// PFNGLPROGRAMUNIFORMMATRIX4X2FVPROC glProgramUniformMatrix4x2fv;
-  	// PFNGLPROGRAMUNIFORMMATRIX3X4FVPROC glProgramUniformMatrix3x4fv;
-  	// PFNGLPROGRAMUNIFORMMATRIX4X3FVPROC glProgramUniformMatrix4x3fv;
-  	// PFNGLPROGRAMUNIFORMMATRIX2X3DVPROC glProgramUniformMatrix2x3dv;
-  	// PFNGLPROGRAMUNIFORMMATRIX3X2DVPROC glProgramUniformMatrix3x2dv;
-  	// PFNGLPROGRAMUNIFORMMATRIX2X4DVPROC glProgramUniformMatrix2x4dv;
-  	// PFNGLPROGRAMUNIFORMMATRIX4X2DVPROC glProgramUniformMatrix4x2dv;
-  	// PFNGLPROGRAMUNIFORMMATRIX3X4DVPROC glProgramUniformMatrix3x4dv;
-  	// PFNGLPROGRAMUNIFORMMATRIX4X3DVPROC glProgramUniformMatrix4x3dv;
-  	// PFNGLVALIDATEPROGRAMPIPELINEPROC glValidateProgramPipeline;
-  	// PFNGLGETPROGRAMPIPELINEINFOLOGPROC glGetProgramPipelineInfoLog;
-  	// PFNGLVERTEXATTRIBL1DPROC glVertexAttribL1d;
-  	// PFNGLVERTEXATTRIBL2DPROC glVertexAttribL2d;
-  	// PFNGLVERTEXATTRIBL3DPROC glVertexAttribL3d;
-  	// PFNGLVERTEXATTRIBL4DPROC glVertexAttribL4d;
-  	// PFNGLVERTEXATTRIBL1DVPROC glVertexAttribL1dv;
-  	// PFNGLVERTEXATTRIBL2DVPROC glVertexAttribL2dv;
-  	// PFNGLVERTEXATTRIBL3DVPROC glVertexAttribL3dv;
-  	// PFNGLVERTEXATTRIBL4DVPROC glVertexAttribL4dv;
-  	// PFNGLVERTEXATTRIBLPOINTERPROC glVertexAttribLPointer;
-  	// PFNGLGETVERTEXATTRIBLDVPROC glGetVertexAttribLdv;
-  	// PFNGLVIEWPORTARRAYVPROC glViewportArrayv;
-  	// PFNGLVIEWPORTINDEXEDFPROC glViewportIndexedf;
-  	// PFNGLVIEWPORTINDEXEDFVPROC glViewportIndexedfv;
-  	// PFNGLSCISSORARRAYVPROC glScissorArrayv;
-  	// PFNGLSCISSORINDEXEDPROC glScissorIndexed;
-  	// PFNGLSCISSORINDEXEDVPROC glScissorIndexedv;
-  	// PFNGLDEPTHRANGEARRAYVPROC glDepthRangeArrayv;
-  	// PFNGLDEPTHRANGEINDEXEDPROC glDepthRangeIndexed;
-  	// PFNGLGETFLOATI_VPROC glGetFloati_v;
-  	// PFNGLGETDOUBLEI_VPROC glGetDoublei_v;
+    PFNWGLCHOOSEPIXELFORMATARBPROC wglChoosePixelFormat;
+    PFNWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribs;
+    // PFNWGLGETCURRENTCONTEXTARBPROC wglGetCurrentContext;
+    // PFNWGLMAKECURRENTPROC wglMakeCurrent;
+    
+    // PFNGLACCUMPROC glAccum; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLACTIVETEXTUREPROC glActiveTexture;
+    // PFNGLALPHAFUNCPROC glAlphaFunc; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLARETEXTURESRESIDENTPROC glAreTexturesResident;// defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLARRAYELEMENTPROC glArrayElement;// defined in GL/gl.h for v1.0 & v1.1
+    PFNGLATTACHSHADERPROC glAttachShader;
+    // PFNGLBEGINPROC glBegin;// defined in GL/gl.h for v1.0 & v1.1
+    PFNGLBEGINCONDITIONALRENDERPROC glBeginConditionalRender;
+    PFNGLBEGINQUERYPROC glBeginQuery;
+    PFNGLBEGINTRANSFORMFEEDBACKPROC glBeginTransformFeedback;
+    PFNGLBINDATTRIBLOCATIONPROC glBindAttribLocation;
+    PFNGLBINDBUFFERPROC glBindBuffer;
+    PFNGLBINDBUFFERBASEPROC glBindBufferBase;
+    PFNGLBINDBUFFERRANGEPROC glBindBufferRange;
+    PFNGLBINDFRAGDATALOCATIONPROC glBindFragDataLocation;
+    PFNGLBINDFRAGDATALOCATIONINDEXEDPROC glBindFragDataLocationIndexed;
+    PFNGLBINDFRAMEBUFFERPROC glBindFramebuffer;
+    PFNGLBINDRENDERBUFFERPROC glBindRenderbuffer;
+    PFNGLBINDSAMPLERPROC glBindSampler;
+    // PFNGLBINDTEXTUREPROC glBindTexture;// defined in GL/gl.h for v1.0 & v1.1
+    PFNGLBINDVERTEXARRAYPROC glBindVertexArray;
+    // PFNGLBITMAPPROC glBitmap;// defined in GL/gl.h for v1.0 & v1.1
+    PFNGLBLENDCOLORPROC glBlendColor;
+    PFNGLBLENDEQUATIONPROC glBlendEquation;
+    PFNGLBLENDEQUATIONSEPARATEPROC glBlendEquationSeparate;
+    // PFNGLBLENDFUNCPROC glBlendFunc;// defined in GL/gl.h for v1.0 & v1.1
+    PFNGLBLENDFUNCSEPARATEPROC glBlendFuncSeparate;
+    PFNGLBLITFRAMEBUFFERPROC glBlitFramebuffer;
+    PFNGLBUFFERDATAPROC glBufferData;
+    PFNGLBUFFERSUBDATAPROC glBufferSubData;
+    // PFNGLCALLLISTPROC glCallList; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCALLLISTSPROC glCallLists; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLCHECKFRAMEBUFFERSTATUSPROC glCheckFramebufferStatus;
+    PFNGLCLAMPCOLORPROC glClampColor;
+    // PFNGLCLEARPROC glClear; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCLEARACCUMPROC glClearAccum; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLCLEARBUFFERFIPROC glClearBufferfi;
+    PFNGLCLEARBUFFERFVPROC glClearBufferfv;
+    PFNGLCLEARBUFFERIVPROC glClearBufferiv;
+    PFNGLCLEARBUFFERUIVPROC glClearBufferuiv;
+    // PFNGLCLEARCOLORPROC glClearColor; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCLEARDEPTHPROC glClearDepth; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCLEARINDEXPROC glClearIndex; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCLEARSTENCILPROC glClearStencil; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLCLIENTACTIVETEXTUREPROC glClientActiveTexture;
+    PFNGLCLIENTWAITSYNCPROC glClientWaitSync;
+    // PFNGLCLIPPLANEPROC glClipPlane; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR3BPROC glColor3b; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR3BVPROC glColor3bv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR3DPROC glColor3d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR3DVPROC glColor3dv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR3FPROC glColor3f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR3FVPROC glColor3fv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR3IPROC glColor3i; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR3IVPROC glColor3iv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR3SPROC glColor3s; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR3SVPROC glColor3sv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR3UBPROC glColor3ub; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR3UBVPROC glColor3ubv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR3UIPROC glColor3ui; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR3UIVPROC glColor3uiv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR3USPROC glColor3us; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR3USVPROC glColor3usv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR4BPROC glColor4b; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR4BVPROC glColor4bv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR4DPROC glColor4d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR4DVPROC glColor4dv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR4FPROC glColor4f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR4FVPROC glColor4fv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR4IPROC glColor4i; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR4IVPROC glColor4iv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR4SPROC glColor4s; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR4SVPROC glColor4sv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR4UBPROC glColor4ub; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR4UBVPROC glColor4ubv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR4UIPROC glColor4ui; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR4UIVPROC glColor4uiv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR4USPROC glColor4us; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLOR4USVPROC glColor4usv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLORMASKPROC glColorMask; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLORMASKIPROC glColorMaski; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOLORMATERIALPROC glColorMaterial; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLCOLORP3UIPROC glColorP3ui;
+    PFNGLCOLORP3UIVPROC glColorP3uiv;
+    PFNGLCOLORP4UIPROC glColorP4ui;
+    PFNGLCOLORP4UIVPROC glColorP4uiv;
+    // PFNGLCOLORPOINTERPROC glColorPointer; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLCOMPILESHADERPROC glCompileShader;
+    PFNGLCOMPRESSEDTEXIMAGE1DPROC glCompressedTexImage1D;
+    PFNGLCOMPRESSEDTEXIMAGE2DPROC glCompressedTexImage2D;
+    PFNGLCOMPRESSEDTEXIMAGE3DPROC glCompressedTexImage3D;
+    PFNGLCOMPRESSEDTEXSUBIMAGE1DPROC glCompressedTexSubImage1D;
+    PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC glCompressedTexSubImage2D;
+    PFNGLCOMPRESSEDTEXSUBIMAGE3DPROC glCompressedTexSubImage3D;
+    PFNGLCOPYBUFFERSUBDATAPROC glCopyBufferSubData;
+    // PFNGLCOPYPIXELSPROC glCopyPixels; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOPYTEXIMAGE1DPROC glCopyTexImage1D; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOPYTEXIMAGE2DPROC glCopyTexImage2D; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOPYTEXSUBIMAGE1DPROC glCopyTexSubImage1D; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLCOPYTEXSUBIMAGE2DPROC glCopyTexSubImage2D; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLCOPYTEXSUBIMAGE3DPROC glCopyTexSubImage3D;
+    PFNGLCREATEPROGRAMPROC glCreateProgram;
+    PFNGLCREATESHADERPROC glCreateShader;
+    // PFNGLCULLFACEPROC glCullFace; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLDEBUGMESSAGECALLBACKPROC glDebugMessageCallback;
+    PFNGLDEBUGMESSAGECONTROLPROC glDebugMessageControl;
+    PFNGLDEBUGMESSAGEINSERTPROC glDebugMessageInsert;
+    PFNGLDELETEBUFFERSPROC glDeleteBuffers;
+    PFNGLDELETEFRAMEBUFFERSPROC glDeleteFramebuffers;
+    // PFNGLDELETELISTSPROC glDeleteLists; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLDELETEPROGRAMPROC glDeleteProgram;
+    PFNGLDELETEQUERIESPROC glDeleteQueries;
+    PFNGLDELETERENDERBUFFERSPROC glDeleteRenderbuffers;
+    PFNGLDELETESAMPLERSPROC glDeleteSamplers;
+    PFNGLDELETESHADERPROC glDeleteShader;
+    PFNGLDELETESYNCPROC glDeleteSync;
+    // PFNGLDELETETEXTURESPROC glDeleteTextures; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLDELETEVERTEXARRAYSPROC glDeleteVertexArrays;
+    // PFNGLDEPTHFUNCPROC glDepthFunc; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLDEPTHMASKPROC glDepthMask; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLDEPTHRANGEPROC glDepthRange; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLDETACHSHADERPROC glDetachShader;
+    // PFNGLDISABLEPROC glDisable; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLDISABLECLIENTSTATEPROC glDisableClientState; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLDISABLEVERTEXATTRIBARRAYPROC glDisableVertexAttribArray;
+    PFNGLDISABLEIPROC glDisablei;
+    // PFNGLDRAWARRAYSPROC glDrawArrays; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLDRAWARRAYSINSTANCEDPROC glDrawArraysInstanced;
+    // PFNGLDRAWBUFFERPROC glDrawBuffer; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLDRAWBUFFERSPROC glDrawBuffers;
+    // PFNGLDRAWELEMENTSPROC glDrawElements; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLDRAWELEMENTSBASEVERTEXPROC glDrawElementsBaseVertex;
+    PFNGLDRAWELEMENTSINSTANCEDPROC glDrawElementsInstanced;
+    PFNGLDRAWELEMENTSINSTANCEDBASEVERTEXPROC glDrawElementsInstancedBaseVertex;
+    // PFNGLDRAWPIXELSPROC glDrawPixels; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLDRAWRANGEELEMENTSPROC glDrawRangeElements;
+    PFNGLDRAWRANGEELEMENTSBASEVERTEXPROC glDrawRangeElementsBaseVertex;
+    // PFNGLEDGEFLAGPROC glEdgeFlag; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLEDGEFLAGPOINTERPROC glEdgeFlagPointer; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLEDGEFLAGVPROC glEdgeFlagv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLENABLEPROC glEnable; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLENABLECLIENTSTATEPROC glEnableClientState; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLENABLEVERTEXATTRIBARRAYPROC glEnableVertexAttribArray;
+    PFNGLENABLEIPROC glEnablei;
+    // PFNGLENDPROC glEnd; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLENDCONDITIONALRENDERPROC glEndConditionalRender;
+    // PFNGLENDLISTPROC glEndList; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLENDQUERYPROC glEndQuery;
+    PFNGLENDTRANSFORMFEEDBACKPROC glEndTransformFeedback;
+    // PFNGLEVALCOORD1DPROC glEvalCoord1d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLEVALCOORD1DVPROC glEvalCoord1dv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLEVALCOORD1FPROC glEvalCoord1f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLEVALCOORD1FVPROC glEvalCoord1fv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLEVALCOORD2DPROC glEvalCoord2d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLEVALCOORD2DVPROC glEvalCoord2dv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLEVALCOORD2FPROC glEvalCoord2f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLEVALCOORD2FVPROC glEvalCoord2fv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLEVALMESH1PROC glEvalMesh1; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLEVALMESH2PROC glEvalMesh2; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLEVALPOINT1PROC glEvalPoint1; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLEVALPOINT2PROC glEvalPoint2; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLFEEDBACKBUFFERPROC glFeedbackBuffer; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLFENCESYNCPROC glFenceSync;
+    // PFNGLFINISHPROC glFinish; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLFLUSHPROC glFlush; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLFLUSHMAPPEDBUFFERRANGEPROC glFlushMappedBufferRange;
+    PFNGLFOGCOORDPOINTERPROC glFogCoordPointer;
+    PFNGLFOGCOORDDPROC glFogCoordd;
+    PFNGLFOGCOORDDVPROC glFogCoorddv;
+    PFNGLFOGCOORDFPROC glFogCoordf;
+    PFNGLFOGCOORDFVPROC glFogCoordfv;
+    // PFNGLFOGFPROC glFogf; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLFOGFVPROC glFogfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLFOGIPROC glFogi; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLFOGIVPROC glFogiv; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLFRAMEBUFFERRENDERBUFFERPROC glFramebufferRenderbuffer;
+    PFNGLFRAMEBUFFERTEXTUREPROC glFramebufferTexture;
+    PFNGLFRAMEBUFFERTEXTURE1DPROC glFramebufferTexture1D;
+    PFNGLFRAMEBUFFERTEXTURE2DPROC glFramebufferTexture2D;
+    PFNGLFRAMEBUFFERTEXTURE3DPROC glFramebufferTexture3D;
+    PFNGLFRAMEBUFFERTEXTURELAYERPROC glFramebufferTextureLayer;
+    // PFNGLFRONTFACEPROC glFrontFace; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLFRUSTUMPROC glFrustum; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLGENBUFFERSPROC glGenBuffers;
+    PFNGLGENFRAMEBUFFERSPROC glGenFramebuffers;
+    // PFNGLGENLISTSPROC glGenLists; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLGENQUERIESPROC glGenQueries;
+    PFNGLGENRENDERBUFFERSPROC glGenRenderbuffers;
+    PFNGLGENSAMPLERSPROC glGenSamplers;
+    // PFNGLGENTEXTURESPROC glGenTextures; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLGENVERTEXARRAYSPROC glGenVertexArrays;
+    PFNGLGENERATEMIPMAPPROC glGenerateMipmap;
+    PFNGLGETACTIVEATTRIBPROC glGetActiveAttrib;
+    PFNGLGETACTIVEUNIFORMPROC glGetActiveUniform;
+    PFNGLGETACTIVEUNIFORMBLOCKNAMEPROC glGetActiveUniformBlockName;
+    PFNGLGETACTIVEUNIFORMBLOCKIVPROC glGetActiveUniformBlockiv;
+    PFNGLGETACTIVEUNIFORMNAMEPROC glGetActiveUniformName;
+    PFNGLGETACTIVEUNIFORMSIVPROC glGetActiveUniformsiv;
+    PFNGLGETATTACHEDSHADERSPROC glGetAttachedShaders;
+    PFNGLGETATTRIBLOCATIONPROC glGetAttribLocation;
+    PFNGLGETBOOLEANI_VPROC glGetBooleani_v;
+    // PFNGLGETBOOLEANVPROC glGetBooleanv; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLGETBUFFERPARAMETERI64VPROC glGetBufferParameteri64v;
+    PFNGLGETBUFFERPARAMETERIVPROC glGetBufferParameteriv;
+    PFNGLGETBUFFERPOINTERVPROC glGetBufferPointerv;
+    PFNGLGETBUFFERSUBDATAPROC glGetBufferSubData;
+    // PFNGLGETCLIPPLANEPROC glGetClipPlane; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLGETCOMPRESSEDTEXIMAGEPROC glGetCompressedTexImage;
+    PFNGLGETDEBUGMESSAGELOGPROC glGetDebugMessageLog;
+    // PFNGLGETDOUBLEVPROC glGetDoublev; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETERRORPROC glGetError; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETFLOATVPROC glGetFloatv; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLGETFRAGDATAINDEXPROC glGetFragDataIndex;
+    PFNGLGETFRAGDATALOCATIONPROC glGetFragDataLocation;
+    PFNGLGETFRAMEBUFFERATTACHMENTPARAMETERIVPROC glGetFramebufferAttachmentParameteriv;
+    PFNGLGETGRAPHICSRESETSTATUSARBPROC glGetGraphicsResetStatusARB;
+    PFNGLGETINTEGER64I_VPROC glGetInteger64i_v;
+    PFNGLGETINTEGER64VPROC glGetInteger64v;
+    PFNGLGETINTEGERI_VPROC glGetIntegeri_v;
+    // PFNGLGETINTEGERVPROC glGetIntegerv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETLIGHTFVPROC glGetLightfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETLIGHTIVPROC glGetLightiv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETMAPDVPROC glGetMapdv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETMAPFVPROC glGetMapfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETMAPIVPROC glGetMapiv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETMATERIALFVPROC glGetMaterialfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETMATERIALIVPROC glGetMaterialiv; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLGETMULTISAMPLEFVPROC glGetMultisamplefv;
+    PFNGLGETOBJECTLABELPROC glGetObjectLabel;
+    PFNGLGETOBJECTPTRLABELPROC glGetObjectPtrLabel;
+    // PFNGLGETPIXELMAPFVPROC glGetPixelMapfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETPIXELMAPUIVPROC glGetPixelMapuiv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETPIXELMAPUSVPROC glGetPixelMapusv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETPOINTERVPROC glGetPointerv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETPOLYGONSTIPPLEPROC glGetPolygonStipple; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLGETPROGRAMINFOLOGPROC glGetProgramInfoLog;
+    PFNGLGETPROGRAMIVPROC glGetProgramiv;
+    PFNGLGETQUERYOBJECTI64VPROC glGetQueryObjecti64v;
+    PFNGLGETQUERYOBJECTIVPROC glGetQueryObjectiv;
+    PFNGLGETQUERYOBJECTUI64VPROC glGetQueryObjectui64v;
+    PFNGLGETQUERYOBJECTUIVPROC glGetQueryObjectuiv;
+    PFNGLGETQUERYIVPROC glGetQueryiv;
+    PFNGLGETRENDERBUFFERPARAMETERIVPROC glGetRenderbufferParameteriv;
+    PFNGLGETSAMPLERPARAMETERIIVPROC glGetSamplerParameterIiv;
+    PFNGLGETSAMPLERPARAMETERIUIVPROC glGetSamplerParameterIuiv;
+    PFNGLGETSAMPLERPARAMETERFVPROC glGetSamplerParameterfv;
+    PFNGLGETSAMPLERPARAMETERIVPROC glGetSamplerParameteriv;
+    PFNGLGETSHADERINFOLOGPROC glGetShaderInfoLog;
+    PFNGLGETSHADERSOURCEPROC glGetShaderSource;
+    PFNGLGETSHADERIVPROC glGetShaderiv;
+    // PFNGLGETSTRINGPROC glGetString; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLGETSTRINGIPROC glGetStringi;
+    PFNGLGETSYNCIVPROC glGetSynciv;
+    // PFNGLGETTEXENVFVPROC glGetTexEnvfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETTEXENVIVPROC glGetTexEnviv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETTEXGENDVPROC glGetTexGendv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETTEXGENFVPROC glGetTexGenfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETTEXGENIVPROC glGetTexGeniv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETTEXIMAGEPROC glGetTexImage; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETTEXLEVELPARAMETERFVPROC glGetTexLevelParameterfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETTEXLEVELPARAMETERIVPROC glGetTexLevelParameteriv; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLGETTEXPARAMETERIIVPROC glGetTexParameterIiv;
+    PFNGLGETTEXPARAMETERIUIVPROC glGetTexParameterIuiv;
+    // PFNGLGETTEXPARAMETERFVPROC glGetTexParameterfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLGETTEXPARAMETERIVPROC glGetTexParameteriv; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLGETTRANSFORMFEEDBACKVARYINGPROC glGetTransformFeedbackVarying;
+    PFNGLGETUNIFORMBLOCKINDEXPROC glGetUniformBlockIndex;
+    PFNGLGETUNIFORMINDICESPROC glGetUniformIndices;
+    PFNGLGETUNIFORMLOCATIONPROC glGetUniformLocation;
+    PFNGLGETUNIFORMFVPROC glGetUniformfv;
+    PFNGLGETUNIFORMIVPROC glGetUniformiv;
+    PFNGLGETUNIFORMUIVPROC glGetUniformuiv;
+    PFNGLGETVERTEXATTRIBIIVPROC glGetVertexAttribIiv;
+    PFNGLGETVERTEXATTRIBIUIVPROC glGetVertexAttribIuiv;
+    PFNGLGETVERTEXATTRIBPOINTERVPROC glGetVertexAttribPointerv;
+    PFNGLGETVERTEXATTRIBDVPROC glGetVertexAttribdv;
+    PFNGLGETVERTEXATTRIBFVPROC glGetVertexAttribfv;
+    PFNGLGETVERTEXATTRIBIVPROC glGetVertexAttribiv;
+    PFNGLGETNCOLORTABLEARBPROC glGetnColorTableARB;
+    PFNGLGETNCOMPRESSEDTEXIMAGEARBPROC glGetnCompressedTexImageARB;
+    PFNGLGETNCONVOLUTIONFILTERARBPROC glGetnConvolutionFilterARB;
+    PFNGLGETNHISTOGRAMARBPROC glGetnHistogramARB;
+    PFNGLGETNMAPDVARBPROC glGetnMapdvARB;
+    PFNGLGETNMAPFVARBPROC glGetnMapfvARB;
+    PFNGLGETNMAPIVARBPROC glGetnMapivARB;
+    PFNGLGETNMINMAXARBPROC glGetnMinmaxARB;
+    PFNGLGETNPIXELMAPFVARBPROC glGetnPixelMapfvARB;
+    PFNGLGETNPIXELMAPUIVARBPROC glGetnPixelMapuivARB;
+    PFNGLGETNPIXELMAPUSVARBPROC glGetnPixelMapusvARB;
+    PFNGLGETNPOLYGONSTIPPLEARBPROC glGetnPolygonStippleARB;
+    PFNGLGETNSEPARABLEFILTERARBPROC glGetnSeparableFilterARB;
+    PFNGLGETNTEXIMAGEARBPROC glGetnTexImageARB;
+    PFNGLGETNUNIFORMDVARBPROC glGetnUniformdvARB;
+    PFNGLGETNUNIFORMFVARBPROC glGetnUniformfvARB;
+    PFNGLGETNUNIFORMIVARBPROC glGetnUniformivARB;
+    PFNGLGETNUNIFORMUIVARBPROC glGetnUniformuivARB;
+    // PFNGLHINTPROC glHint; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLINDEXMASKPROC glIndexMask; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLINDEXPOINTERPROC glIndexPointer; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLINDEXDPROC glIndexd; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLINDEXDVPROC glIndexdv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLINDEXFPROC glIndexf; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLINDEXFVPROC glIndexfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLINDEXIPROC glIndexi; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLINDEXIVPROC glIndexiv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLINDEXSPROC glIndexs; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLINDEXSVPROC glIndexsv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLINDEXUBPROC glIndexub; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLINDEXUBVPROC glIndexubv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLINITNAMESPROC glInitNames; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLINTERLEAVEDARRAYSPROC glInterleavedArrays; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLISBUFFERPROC glIsBuffer;
+    // PFNGLISENABLEDPROC glIsEnabled; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLISENABLEDIPROC glIsEnabledi;
+    PFNGLISFRAMEBUFFERPROC glIsFramebuffer;
+    // PFNGLISLISTPROC glIsList; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLISPROGRAMPROC glIsProgram;
+    PFNGLISQUERYPROC glIsQuery;
+    PFNGLISRENDERBUFFERPROC glIsRenderbuffer;
+    PFNGLISSAMPLERPROC glIsSampler;
+    PFNGLISSHADERPROC glIsShader;
+    PFNGLISSYNCPROC glIsSync;
+    // PFNGLISTEXTUREPROC glIsTexture; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLISVERTEXARRAYPROC glIsVertexArray;
+    // PFNGLLIGHTMODELFPROC glLightModelf; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLLIGHTMODELFVPROC glLightModelfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLLIGHTMODELIPROC glLightModeli; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLLIGHTMODELIVPROC glLightModeliv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLLIGHTFPROC glLightf; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLLIGHTFVPROC glLightfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLLIGHTIPROC glLighti; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLLIGHTIVPROC glLightiv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLLINESTIPPLEPROC glLineStipple; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLLINEWIDTHPROC glLineWidth; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLLINKPROGRAMPROC glLinkProgram;
+    // PFNGLLISTBASEPROC glListBase; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLLOADIDENTITYPROC glLoadIdentity; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLLOADMATRIXDPROC glLoadMatrixd; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLLOADMATRIXFPROC glLoadMatrixf; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLLOADNAMEPROC glLoadName; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLLOADTRANSPOSEMATRIXDPROC glLoadTransposeMatrixd;
+    PFNGLLOADTRANSPOSEMATRIXFPROC glLoadTransposeMatrixf;
+    // PFNGLLOGICOPPROC glLogicOp; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLMAP1DPROC glMap1d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLMAP1FPROC glMap1f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLMAP2DPROC glMap2d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLMAP2FPROC glMap2f; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLMAPBUFFERPROC glMapBuffer;
+    PFNGLMAPBUFFERRANGEPROC glMapBufferRange;
+    // PFNGLMAPGRID1DPROC glMapGrid1d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLMAPGRID1FPROC glMapGrid1f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLMAPGRID2DPROC glMapGrid2d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLMAPGRID2FPROC glMapGrid2f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLMATERIALFPROC glMaterialf; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLMATERIALFVPROC glMaterialfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLMATERIALIPROC glMateriali; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLMATERIALIVPROC glMaterialiv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLMATRIXMODEPROC glMatrixMode; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLMULTMATRIXDPROC glMultMatrixd; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLMULTMATRIXFPROC glMultMatrixf; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLMULTTRANSPOSEMATRIXDPROC glMultTransposeMatrixd;
+    PFNGLMULTTRANSPOSEMATRIXFPROC glMultTransposeMatrixf;
+    PFNGLMULTIDRAWARRAYSPROC glMultiDrawArrays;
+    PFNGLMULTIDRAWELEMENTSPROC glMultiDrawElements;
+    PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC glMultiDrawElementsBaseVertex;
+    PFNGLMULTITEXCOORD1DPROC glMultiTexCoord1d;
+    PFNGLMULTITEXCOORD1DVPROC glMultiTexCoord1dv;
+    PFNGLMULTITEXCOORD1FPROC glMultiTexCoord1f;
+    PFNGLMULTITEXCOORD1FVPROC glMultiTexCoord1fv;
+    PFNGLMULTITEXCOORD1IPROC glMultiTexCoord1i;
+    PFNGLMULTITEXCOORD1IVPROC glMultiTexCoord1iv;
+    PFNGLMULTITEXCOORD1SPROC glMultiTexCoord1s;
+    PFNGLMULTITEXCOORD1SVPROC glMultiTexCoord1sv;
+    PFNGLMULTITEXCOORD2DPROC glMultiTexCoord2d;
+    PFNGLMULTITEXCOORD2DVPROC glMultiTexCoord2dv;
+    PFNGLMULTITEXCOORD2FPROC glMultiTexCoord2f;
+    PFNGLMULTITEXCOORD2FVPROC glMultiTexCoord2fv;
+    PFNGLMULTITEXCOORD2IPROC glMultiTexCoord2i;
+    PFNGLMULTITEXCOORD2IVPROC glMultiTexCoord2iv;
+    PFNGLMULTITEXCOORD2SPROC glMultiTexCoord2s;
+    PFNGLMULTITEXCOORD2SVPROC glMultiTexCoord2sv;
+    PFNGLMULTITEXCOORD3DPROC glMultiTexCoord3d;
+    PFNGLMULTITEXCOORD3DVPROC glMultiTexCoord3dv;
+    PFNGLMULTITEXCOORD3FPROC glMultiTexCoord3f;
+    PFNGLMULTITEXCOORD3FVPROC glMultiTexCoord3fv;
+    PFNGLMULTITEXCOORD3IPROC glMultiTexCoord3i;
+    PFNGLMULTITEXCOORD3IVPROC glMultiTexCoord3iv;
+    PFNGLMULTITEXCOORD3SPROC glMultiTexCoord3s;
+    PFNGLMULTITEXCOORD3SVPROC glMultiTexCoord3sv;
+    PFNGLMULTITEXCOORD4DPROC glMultiTexCoord4d;
+    PFNGLMULTITEXCOORD4DVPROC glMultiTexCoord4dv;
+    PFNGLMULTITEXCOORD4FPROC glMultiTexCoord4f;
+    PFNGLMULTITEXCOORD4FVPROC glMultiTexCoord4fv;
+    PFNGLMULTITEXCOORD4IPROC glMultiTexCoord4i;
+    PFNGLMULTITEXCOORD4IVPROC glMultiTexCoord4iv;
+    PFNGLMULTITEXCOORD4SPROC glMultiTexCoord4s;
+    PFNGLMULTITEXCOORD4SVPROC glMultiTexCoord4sv;
+    PFNGLMULTITEXCOORDP1UIPROC glMultiTexCoordP1ui;
+    PFNGLMULTITEXCOORDP1UIVPROC glMultiTexCoordP1uiv;
+    PFNGLMULTITEXCOORDP2UIPROC glMultiTexCoordP2ui;
+    PFNGLMULTITEXCOORDP2UIVPROC glMultiTexCoordP2uiv;
+    PFNGLMULTITEXCOORDP3UIPROC glMultiTexCoordP3ui;
+    PFNGLMULTITEXCOORDP3UIVPROC glMultiTexCoordP3uiv;
+    PFNGLMULTITEXCOORDP4UIPROC glMultiTexCoordP4ui;
+    PFNGLMULTITEXCOORDP4UIVPROC glMultiTexCoordP4uiv;
+    // PFNGLNEWLISTPROC glNewList; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLNORMAL3BPROC glNormal3b; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLNORMAL3BVPROC glNormal3bv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLNORMAL3DPROC glNormal3d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLNORMAL3DVPROC glNormal3dv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLNORMAL3FPROC glNormal3f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLNORMAL3FVPROC glNormal3fv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLNORMAL3IPROC glNormal3i; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLNORMAL3IVPROC glNormal3iv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLNORMAL3SPROC glNormal3s; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLNORMAL3SVPROC glNormal3sv; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLNORMALP3UIPROC glNormalP3ui;
+    PFNGLNORMALP3UIVPROC glNormalP3uiv;
+    // PFNGLNORMALPOINTERPROC glNormalPointer; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLOBJECTLABELPROC glObjectLabel;
+    PFNGLOBJECTPTRLABELPROC glObjectPtrLabel;
+    // PFNGLORTHOPROC glOrtho; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPASSTHROUGHPROC glPassThrough; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPIXELMAPFVPROC glPixelMapfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPIXELMAPUIVPROC glPixelMapuiv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPIXELMAPUSVPROC glPixelMapusv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPIXELSTOREFPROC glPixelStoref; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPIXELSTOREIPROC glPixelStorei; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPIXELTRANSFERFPROC glPixelTransferf; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPIXELTRANSFERIPROC glPixelTransferi; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPIXELZOOMPROC glPixelZoom; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLPOINTPARAMETERFPROC glPointParameterf;
+    PFNGLPOINTPARAMETERFVPROC glPointParameterfv;
+    PFNGLPOINTPARAMETERIPROC glPointParameteri;
+    PFNGLPOINTPARAMETERIVPROC glPointParameteriv;
+    // PFNGLPOINTSIZEPROC glPointSize; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPOLYGONMODEPROC glPolygonMode; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPOLYGONOFFSETPROC glPolygonOffset; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPOLYGONSTIPPLEPROC glPolygonStipple; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPOPATTRIBPROC glPopAttrib; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPOPCLIENTATTRIBPROC glPopClientAttrib; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLPOPDEBUGGROUPPROC glPopDebugGroup;
+    // PFNGLPOPMATRIXPROC glPopMatrix; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPOPNAMEPROC glPopName; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLPRIMITIVERESTARTINDEXPROC glPrimitiveRestartIndex;
+    // PFNGLPRIORITIZETEXTURESPROC glPrioritizeTextures; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLPROVOKINGVERTEXPROC glProvokingVertex;
+    // PFNGLPUSHATTRIBPROC glPushAttrib; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPUSHCLIENTATTRIBPROC glPushClientAttrib; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLPUSHDEBUGGROUPPROC glPushDebugGroup;
+    // PFNGLPUSHMATRIXPROC glPushMatrix; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLPUSHNAMEPROC glPushName; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLQUERYCOUNTERPROC glQueryCounter;
+    // PFNGLRASTERPOS2DPROC glRasterPos2d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS2DVPROC glRasterPos2dv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS2FPROC glRasterPos2f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS2FVPROC glRasterPos2fv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS2IPROC glRasterPos2i; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS2IVPROC glRasterPos2iv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS2SPROC glRasterPos2s; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS2SVPROC glRasterPos2sv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS3DPROC glRasterPos3d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS3DVPROC glRasterPos3dv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS3FPROC glRasterPos3f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS3FVPROC glRasterPos3fv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS3IPROC glRasterPos3i; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS3IVPROC glRasterPos3iv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS3SPROC glRasterPos3s; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS3SVPROC glRasterPos3sv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS4DPROC glRasterPos4d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS4DVPROC glRasterPos4dv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS4FPROC glRasterPos4f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS4FVPROC glRasterPos4fv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS4IPROC glRasterPos4i; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS4IVPROC glRasterPos4iv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS4SPROC glRasterPos4s; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRASTERPOS4SVPROC glRasterPos4sv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLREADBUFFERPROC glReadBuffer; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLREADPIXELSPROC glReadPixels; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLREADNPIXELSPROC glReadnPixels;
+    PFNGLREADNPIXELSARBPROC glReadnPixelsARB;
+    // PFNGLRECTDPROC glRectd; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRECTDVPROC glRectdv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRECTFPROC glRectf; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRECTFVPROC glRectfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRECTIPROC glRecti; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRECTIVPROC glRectiv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRECTSPROC glRects; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRECTSVPROC glRectsv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLRENDERMODEPROC glRenderMode; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLRENDERBUFFERSTORAGEPROC glRenderbufferStorage;
+    PFNGLRENDERBUFFERSTORAGEMULTISAMPLEPROC glRenderbufferStorageMultisample;
+    // PFNGLROTATEDPROC glRotated; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLROTATEFPROC glRotatef; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLSAMPLECOVERAGEPROC glSampleCoverage;
+    PFNGLSAMPLECOVERAGEARBPROC glSampleCoverageARB;
+    PFNGLSAMPLEMASKIPROC glSampleMaski;
+    PFNGLSAMPLERPARAMETERIIVPROC glSamplerParameterIiv;
+    PFNGLSAMPLERPARAMETERIUIVPROC glSamplerParameterIuiv;
+    PFNGLSAMPLERPARAMETERFPROC glSamplerParameterf;
+    PFNGLSAMPLERPARAMETERFVPROC glSamplerParameterfv;
+    PFNGLSAMPLERPARAMETERIPROC glSamplerParameteri;
+    PFNGLSAMPLERPARAMETERIVPROC glSamplerParameteriv;
+    // PFNGLSCALEDPROC glScaled; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLSCALEFPROC glScalef; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLSCISSORPROC glScissor; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLSECONDARYCOLOR3BPROC glSecondaryColor3b;
+    PFNGLSECONDARYCOLOR3BVPROC glSecondaryColor3bv;
+    PFNGLSECONDARYCOLOR3DPROC glSecondaryColor3d;
+    PFNGLSECONDARYCOLOR3DVPROC glSecondaryColor3dv;
+    PFNGLSECONDARYCOLOR3FPROC glSecondaryColor3f;
+    PFNGLSECONDARYCOLOR3FVPROC glSecondaryColor3fv;
+    PFNGLSECONDARYCOLOR3IPROC glSecondaryColor3i;
+    PFNGLSECONDARYCOLOR3IVPROC glSecondaryColor3iv;
+    PFNGLSECONDARYCOLOR3SPROC glSecondaryColor3s;
+    PFNGLSECONDARYCOLOR3SVPROC glSecondaryColor3sv;
+    PFNGLSECONDARYCOLOR3UBPROC glSecondaryColor3ub;
+    PFNGLSECONDARYCOLOR3UBVPROC glSecondaryColor3ubv;
+    PFNGLSECONDARYCOLOR3UIPROC glSecondaryColor3ui;
+    PFNGLSECONDARYCOLOR3UIVPROC glSecondaryColor3uiv;
+    PFNGLSECONDARYCOLOR3USPROC glSecondaryColor3us;
+    PFNGLSECONDARYCOLOR3USVPROC glSecondaryColor3usv;
+    PFNGLSECONDARYCOLORP3UIPROC glSecondaryColorP3ui;
+    PFNGLSECONDARYCOLORP3UIVPROC glSecondaryColorP3uiv;
+    PFNGLSECONDARYCOLORPOINTERPROC glSecondaryColorPointer;
+    // PFNGLSELECTBUFFERPROC glSelectBuffer; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLSHADEMODELPROC glShadeModel; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLSHADERSOURCEPROC glShaderSource;
+    // PFNGLSTENCILFUNCPROC glStencilFunc; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLSTENCILFUNCSEPARATEPROC glStencilFuncSeparate;
+    // PFNGLSTENCILMASKPROC glStencilMask; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLSTENCILMASKSEPARATEPROC glStencilMaskSeparate;
+    // PFNGLSTENCILOPPROC glStencilOp; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLSTENCILOPSEPARATEPROC glStencilOpSeparate;
+    PFNGLTEXBUFFERPROC glTexBuffer;
+    // PFNGLTEXCOORD1DPROC glTexCoord1d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD1DVPROC glTexCoord1dv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD1FPROC glTexCoord1f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD1FVPROC glTexCoord1fv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD1IPROC glTexCoord1i; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD1IVPROC glTexCoord1iv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD1SPROC glTexCoord1s; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD1SVPROC glTexCoord1sv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD2DPROC glTexCoord2d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD2DVPROC glTexCoord2dv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD2FPROC glTexCoord2f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD2FVPROC glTexCoord2fv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD2IPROC glTexCoord2i; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD2IVPROC glTexCoord2iv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD2SPROC glTexCoord2s; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD2SVPROC glTexCoord2sv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD3DPROC glTexCoord3d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD3DVPROC glTexCoord3dv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD3FPROC glTexCoord3f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD3FVPROC glTexCoord3fv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD3IPROC glTexCoord3i; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD3IVPROC glTexCoord3iv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD3SPROC glTexCoord3s; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD3SVPROC glTexCoord3sv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD4DPROC glTexCoord4d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD4DVPROC glTexCoord4dv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD4FPROC glTexCoord4f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD4FVPROC glTexCoord4fv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD4IPROC glTexCoord4i; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD4IVPROC glTexCoord4iv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD4SPROC glTexCoord4s; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXCOORD4SVPROC glTexCoord4sv; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLTEXCOORDP1UIPROC glTexCoordP1ui;
+    PFNGLTEXCOORDP1UIVPROC glTexCoordP1uiv;
+    PFNGLTEXCOORDP2UIPROC glTexCoordP2ui;
+    PFNGLTEXCOORDP2UIVPROC glTexCoordP2uiv;
+    PFNGLTEXCOORDP3UIPROC glTexCoordP3ui;
+    PFNGLTEXCOORDP3UIVPROC glTexCoordP3uiv;
+    PFNGLTEXCOORDP4UIPROC glTexCoordP4ui;
+    PFNGLTEXCOORDP4UIVPROC glTexCoordP4uiv;
+    // PFNGLTEXCOORDPOINTERPROC glTexCoordPointer; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXENVFPROC glTexEnvf; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXENVFVPROC glTexEnvfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXENVIPROC glTexEnvi; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXENVIVPROC glTexEnviv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXGENDPROC glTexGend; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXGENDVPROC glTexGendv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXGENFPROC glTexGenf; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXGENFVPROC glTexGenfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXGENIPROC glTexGeni; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXGENIVPROC glTexGeniv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXIMAGE1DPROC glTexImage1D; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXIMAGE2DPROC glTexImage2D; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLTEXIMAGE2DMULTISAMPLEPROC glTexImage2DMultisample;
+    PFNGLTEXIMAGE3DPROC glTexImage3D;
+    PFNGLTEXIMAGE3DMULTISAMPLEPROC glTexImage3DMultisample;
+    PFNGLTEXPARAMETERIIVPROC glTexParameterIiv;
+    PFNGLTEXPARAMETERIUIVPROC glTexParameterIuiv;
+    // PFNGLTEXPARAMETERFPROC glTexParameterf; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXPARAMETERFVPROC glTexParameterfv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXPARAMETERIPROC glTexParameteri; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXPARAMETERIVPROC glTexParameteriv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXSUBIMAGE1DPROC glTexSubImage1D; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTEXSUBIMAGE2DPROC glTexSubImage2D; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLTEXSUBIMAGE3DPROC glTexSubImage3D;
+    PFNGLTRANSFORMFEEDBACKVARYINGSPROC glTransformFeedbackVaryings;
+    // PFNGLTRANSLATEDPROC glTranslated; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLTRANSLATEFPROC glTranslatef; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLUNIFORM1FPROC glUniform1f;
+    PFNGLUNIFORM1FVPROC glUniform1fv;
+    PFNGLUNIFORM1IPROC glUniform1i;
+    PFNGLUNIFORM1IVPROC glUniform1iv;
+    PFNGLUNIFORM1UIPROC glUniform1ui;
+    PFNGLUNIFORM1UIVPROC glUniform1uiv;
+    PFNGLUNIFORM2FPROC glUniform2f;
+    PFNGLUNIFORM2FVPROC glUniform2fv;
+    PFNGLUNIFORM2IPROC glUniform2i;
+    PFNGLUNIFORM2IVPROC glUniform2iv;
+    PFNGLUNIFORM2UIPROC glUniform2ui;
+    PFNGLUNIFORM2UIVPROC glUniform2uiv;
+    PFNGLUNIFORM3FPROC glUniform3f;
+    PFNGLUNIFORM3FVPROC glUniform3fv;
+    PFNGLUNIFORM3IPROC glUniform3i;
+    PFNGLUNIFORM3IVPROC glUniform3iv;
+    PFNGLUNIFORM3UIPROC glUniform3ui;
+    PFNGLUNIFORM3UIVPROC glUniform3uiv;
+    PFNGLUNIFORM4FPROC glUniform4f;
+    PFNGLUNIFORM4FVPROC glUniform4fv;
+    PFNGLUNIFORM4IPROC glUniform4i;
+    PFNGLUNIFORM4IVPROC glUniform4iv;
+    PFNGLUNIFORM4UIPROC glUniform4ui;
+    PFNGLUNIFORM4UIVPROC glUniform4uiv;
+    PFNGLUNIFORMBLOCKBINDINGPROC glUniformBlockBinding;
+    PFNGLUNIFORMMATRIX2FVPROC glUniformMatrix2fv;
+    PFNGLUNIFORMMATRIX2X3FVPROC glUniformMatrix2x3fv;
+    PFNGLUNIFORMMATRIX2X4FVPROC glUniformMatrix2x4fv;
+    PFNGLUNIFORMMATRIX3FVPROC glUniformMatrix3fv;
+    PFNGLUNIFORMMATRIX3X2FVPROC glUniformMatrix3x2fv;
+    PFNGLUNIFORMMATRIX3X4FVPROC glUniformMatrix3x4fv;
+    PFNGLUNIFORMMATRIX4FVPROC glUniformMatrix4fv;
+    PFNGLUNIFORMMATRIX4X2FVPROC glUniformMatrix4x2fv;
+    PFNGLUNIFORMMATRIX4X3FVPROC glUniformMatrix4x3fv;
+    PFNGLUNMAPBUFFERPROC glUnmapBuffer;
+    PFNGLUSEPROGRAMPROC glUseProgram;
+    PFNGLVALIDATEPROGRAMPROC glValidateProgram;
+    // PFNGLVERTEX2DPROC glVertex2d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX2DVPROC glVertex2dv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX2FPROC glVertex2f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX2FVPROC glVertex2fv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX2IPROC glVertex2i; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX2IVPROC glVertex2iv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX2SPROC glVertex2s; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX2SVPROC glVertex2sv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX3DPROC glVertex3d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX3DVPROC glVertex3dv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX3FPROC glVertex3f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX3FVPROC glVertex3fv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX3IPROC glVertex3i; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX3IVPROC glVertex3iv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX3SPROC glVertex3s; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX3SVPROC glVertex3sv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX4DPROC glVertex4d; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX4DVPROC glVertex4dv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX4FPROC glVertex4f; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX4FVPROC glVertex4fv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX4IPROC glVertex4i; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX4IVPROC glVertex4iv; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX4SPROC glVertex4s; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVERTEX4SVPROC glVertex4sv; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLVERTEXATTRIB1DPROC glVertexAttrib1d;
+    PFNGLVERTEXATTRIB1DVPROC glVertexAttrib1dv;
+    PFNGLVERTEXATTRIB1FPROC glVertexAttrib1f;
+    PFNGLVERTEXATTRIB1FVPROC glVertexAttrib1fv;
+    PFNGLVERTEXATTRIB1SPROC glVertexAttrib1s;
+    PFNGLVERTEXATTRIB1SVPROC glVertexAttrib1sv;
+    PFNGLVERTEXATTRIB2DPROC glVertexAttrib2d;
+    PFNGLVERTEXATTRIB2DVPROC glVertexAttrib2dv;
+    PFNGLVERTEXATTRIB2FPROC glVertexAttrib2f;
+    PFNGLVERTEXATTRIB2FVPROC glVertexAttrib2fv;
+    PFNGLVERTEXATTRIB2SPROC glVertexAttrib2s;
+    PFNGLVERTEXATTRIB2SVPROC glVertexAttrib2sv;
+    PFNGLVERTEXATTRIB3DPROC glVertexAttrib3d;
+    PFNGLVERTEXATTRIB3DVPROC glVertexAttrib3dv;
+    PFNGLVERTEXATTRIB3FPROC glVertexAttrib3f;
+    PFNGLVERTEXATTRIB3FVPROC glVertexAttrib3fv;
+    PFNGLVERTEXATTRIB3SPROC glVertexAttrib3s;
+    PFNGLVERTEXATTRIB3SVPROC glVertexAttrib3sv;
+    PFNGLVERTEXATTRIB4NBVPROC glVertexAttrib4Nbv;
+    PFNGLVERTEXATTRIB4NIVPROC glVertexAttrib4Niv;
+    PFNGLVERTEXATTRIB4NSVPROC glVertexAttrib4Nsv;
+    PFNGLVERTEXATTRIB4NUBPROC glVertexAttrib4Nub;
+    PFNGLVERTEXATTRIB4NUBVPROC glVertexAttrib4Nubv;
+    PFNGLVERTEXATTRIB4NUIVPROC glVertexAttrib4Nuiv;
+    PFNGLVERTEXATTRIB4NUSVPROC glVertexAttrib4Nusv;
+    PFNGLVERTEXATTRIB4BVPROC glVertexAttrib4bv;
+    PFNGLVERTEXATTRIB4DPROC glVertexAttrib4d;
+    PFNGLVERTEXATTRIB4DVPROC glVertexAttrib4dv;
+    PFNGLVERTEXATTRIB4FPROC glVertexAttrib4f;
+    PFNGLVERTEXATTRIB4FVPROC glVertexAttrib4fv;
+    PFNGLVERTEXATTRIB4IVPROC glVertexAttrib4iv;
+    PFNGLVERTEXATTRIB4SPROC glVertexAttrib4s;
+    PFNGLVERTEXATTRIB4SVPROC glVertexAttrib4sv;
+    PFNGLVERTEXATTRIB4UBVPROC glVertexAttrib4ubv;
+    PFNGLVERTEXATTRIB4UIVPROC glVertexAttrib4uiv;
+    PFNGLVERTEXATTRIB4USVPROC glVertexAttrib4usv;
+    PFNGLVERTEXATTRIBDIVISORPROC glVertexAttribDivisor;
+    PFNGLVERTEXATTRIBI1IPROC glVertexAttribI1i;
+    PFNGLVERTEXATTRIBI1IVPROC glVertexAttribI1iv;
+    PFNGLVERTEXATTRIBI1UIPROC glVertexAttribI1ui;
+    PFNGLVERTEXATTRIBI1UIVPROC glVertexAttribI1uiv;
+    PFNGLVERTEXATTRIBI2IPROC glVertexAttribI2i;
+    PFNGLVERTEXATTRIBI2IVPROC glVertexAttribI2iv;
+    PFNGLVERTEXATTRIBI2UIPROC glVertexAttribI2ui;
+    PFNGLVERTEXATTRIBI2UIVPROC glVertexAttribI2uiv;
+    PFNGLVERTEXATTRIBI3IPROC glVertexAttribI3i;
+    PFNGLVERTEXATTRIBI3IVPROC glVertexAttribI3iv;
+    PFNGLVERTEXATTRIBI3UIPROC glVertexAttribI3ui;
+    PFNGLVERTEXATTRIBI3UIVPROC glVertexAttribI3uiv;
+    PFNGLVERTEXATTRIBI4BVPROC glVertexAttribI4bv;
+    PFNGLVERTEXATTRIBI4IPROC glVertexAttribI4i;
+    PFNGLVERTEXATTRIBI4IVPROC glVertexAttribI4iv;
+    PFNGLVERTEXATTRIBI4SVPROC glVertexAttribI4sv;
+    PFNGLVERTEXATTRIBI4UBVPROC glVertexAttribI4ubv;
+    PFNGLVERTEXATTRIBI4UIPROC glVertexAttribI4ui;
+    PFNGLVERTEXATTRIBI4UIVPROC glVertexAttribI4uiv;
+    PFNGLVERTEXATTRIBI4USVPROC glVertexAttribI4usv;
+    PFNGLVERTEXATTRIBIPOINTERPROC glVertexAttribIPointer;
+    PFNGLVERTEXATTRIBP1UIPROC glVertexAttribP1ui;
+    PFNGLVERTEXATTRIBP1UIVPROC glVertexAttribP1uiv;
+    PFNGLVERTEXATTRIBP2UIPROC glVertexAttribP2ui;
+    PFNGLVERTEXATTRIBP2UIVPROC glVertexAttribP2uiv;
+    PFNGLVERTEXATTRIBP3UIPROC glVertexAttribP3ui;
+    PFNGLVERTEXATTRIBP3UIVPROC glVertexAttribP3uiv;
+    PFNGLVERTEXATTRIBP4UIPROC glVertexAttribP4ui;
+    PFNGLVERTEXATTRIBP4UIVPROC glVertexAttribP4uiv;
+    PFNGLVERTEXATTRIBPOINTERPROC glVertexAttribPointer;
+    PFNGLVERTEXP2UIPROC glVertexP2ui;
+    PFNGLVERTEXP2UIVPROC glVertexP2uiv;
+    PFNGLVERTEXP3UIPROC glVertexP3ui;
+    PFNGLVERTEXP3UIVPROC glVertexP3uiv;
+    PFNGLVERTEXP4UIPROC glVertexP4ui;
+    PFNGLVERTEXP4UIVPROC glVertexP4uiv;
+    // PFNGLVERTEXPOINTERPROC glVertexPointer; // defined in GL/gl.h for v1.0 & v1.1
+    // PFNGLVIEWPORTPROC glViewport; // defined in GL/gl.h for v1.0 & v1.1
+    PFNGLWAITSYNCPROC glWaitSync;
+    PFNGLWINDOWPOS2DPROC glWindowPos2d;
+    PFNGLWINDOWPOS2DVPROC glWindowPos2dv;
+    PFNGLWINDOWPOS2FPROC glWindowPos2f;
+    PFNGLWINDOWPOS2FVPROC glWindowPos2fv;
+    PFNGLWINDOWPOS2IPROC glWindowPos2i;
+    PFNGLWINDOWPOS2IVPROC glWindowPos2iv;
+    PFNGLWINDOWPOS2SPROC glWindowPos2s;
+    PFNGLWINDOWPOS2SVPROC glWindowPos2sv;
+    PFNGLWINDOWPOS3DPROC glWindowPos3d;
+    PFNGLWINDOWPOS3DVPROC glWindowPos3dv;
+    PFNGLWINDOWPOS3FPROC glWindowPos3f;
+    PFNGLWINDOWPOS3FVPROC glWindowPos3fv;
+    PFNGLWINDOWPOS3IPROC glWindowPos3i;
+    PFNGLWINDOWPOS3IVPROC glWindowPos3iv;
+    PFNGLWINDOWPOS3SPROC glWindowPos3s;
+    PFNGLWINDOWPOS3SVPROC glWindowPos3sv;
+    //opengl 4.0
+    PFNGLMINSAMPLESHADINGPROC glMinSampleShading;
+  	PFNGLBLENDEQUATIONIPROC glBlendEquationi;
+  	PFNGLBLENDEQUATIONSEPARATEIPROC glBlendEquationSeparatei;
+  	PFNGLBLENDFUNCIPROC glBlendFunci;
+  	PFNGLBLENDFUNCSEPARATEIPROC glBlendFuncSeparatei;
+  	PFNGLDRAWARRAYSINDIRECTPROC glDrawArraysIndirect;
+  	PFNGLDRAWELEMENTSINDIRECTPROC glDrawElementsIndirect;
+  	PFNGLUNIFORM1DPROC glUniform1d;
+  	PFNGLUNIFORM2DPROC glUniform2d;
+  	PFNGLUNIFORM3DPROC glUniform3d;
+  	PFNGLUNIFORM4DPROC glUniform4d;
+  	PFNGLUNIFORM1DVPROC glUniform1dv;
+  	PFNGLUNIFORM2DVPROC glUniform2dv;
+  	PFNGLUNIFORM3DVPROC glUniform3dv;
+  	PFNGLUNIFORM4DVPROC glUniform4dv;
+  	PFNGLUNIFORMMATRIX2DVPROC glUniformMatrix2dv;
+  	PFNGLUNIFORMMATRIX3DVPROC glUniformMatrix3dv;
+  	PFNGLUNIFORMMATRIX4DVPROC glUniformMatrix4dv;
+  	PFNGLUNIFORMMATRIX2X3DVPROC glUniformMatrix2x3dv;
+  	PFNGLUNIFORMMATRIX2X4DVPROC glUniformMatrix2x4dv;
+  	PFNGLUNIFORMMATRIX3X2DVPROC glUniformMatrix3x2dv;
+  	PFNGLUNIFORMMATRIX3X4DVPROC glUniformMatrix3x4dv;
+  	PFNGLUNIFORMMATRIX4X2DVPROC glUniformMatrix4x2dv;
+  	PFNGLUNIFORMMATRIX4X3DVPROC glUniformMatrix4x3dv;
+  	PFNGLGETUNIFORMDVPROC glGetUniformdv;
+  	PFNGLGETSUBROUTINEUNIFORMLOCATIONPROC glGetSubroutineUniformLocation;
+  	PFNGLGETSUBROUTINEINDEXPROC glGetSubroutineIndex;
+  	PFNGLGETACTIVESUBROUTINEUNIFORMIVPROC glGetActiveSubroutineUniformiv;
+  	PFNGLGETACTIVESUBROUTINEUNIFORMNAMEPROC glGetActiveSubroutineUniformName;
+  	PFNGLGETACTIVESUBROUTINENAMEPROC glGetActiveSubroutineName;
+  	PFNGLUNIFORMSUBROUTINESUIVPROC glUniformSubroutinesuiv;
+  	PFNGLGETUNIFORMSUBROUTINEUIVPROC glGetUniformSubroutineuiv;
+  	PFNGLGETPROGRAMSTAGEIVPROC glGetProgramStageiv;
+  	PFNGLPATCHPARAMETERIPROC glPatchParameteri;
+  	PFNGLPATCHPARAMETERFVPROC glPatchParameterfv;
+  	PFNGLBINDTRANSFORMFEEDBACKPROC glBindTransformFeedback;
+  	PFNGLDELETETRANSFORMFEEDBACKSPROC glDeleteTransformFeedbacks;
+  	PFNGLGENTRANSFORMFEEDBACKSPROC glGenTransformFeedbacks;
+  	PFNGLISTRANSFORMFEEDBACKPROC glIsTransformFeedback;
+  	PFNGLPAUSETRANSFORMFEEDBACKPROC glPauseTransformFeedback;
+  	PFNGLRESUMETRANSFORMFEEDBACKPROC glResumeTransformFeedback;
+  	PFNGLDRAWTRANSFORMFEEDBACKPROC glDrawTransformFeedback;
+  	PFNGLDRAWTRANSFORMFEEDBACKSTREAMPROC glDrawTransformFeedbackStream;
+  	PFNGLBEGINQUERYINDEXEDPROC glBeginQueryIndexed;
+  	PFNGLENDQUERYINDEXEDPROC glEndQueryIndexed;
+  	PFNGLGETQUERYINDEXEDIVPROC glGetQueryIndexediv;
+
+    //opengl 4.1
+    PFNGLRELEASESHADERCOMPILERPROC glReleaseShaderCompiler;
+  	PFNGLSHADERBINARYPROC glShaderBinary;
+  	PFNGLGETSHADERPRECISIONFORMATPROC glGetShaderPrecisionFormat;
+  	PFNGLDEPTHRANGEFPROC glDepthRangef;
+  	PFNGLCLEARDEPTHFPROC glClearDepthf;
+  	PFNGLGETPROGRAMBINARYPROC glGetProgramBinary;
+  	PFNGLPROGRAMBINARYPROC glProgramBinary;
+  	PFNGLPROGRAMPARAMETERIPROC glProgramParameteri;
+  	PFNGLUSEPROGRAMSTAGESPROC glUseProgramStages;
+  	PFNGLACTIVESHADERPROGRAMPROC glActiveShaderProgram;
+  	PFNGLCREATESHADERPROGRAMVPROC glCreateShaderProgramv;
+  	PFNGLBINDPROGRAMPIPELINEPROC glBindProgramPipeline;
+  	PFNGLDELETEPROGRAMPIPELINESPROC glDeleteProgramPipelines;
+  	PFNGLGENPROGRAMPIPELINESPROC glGenProgramPipelines;
+  	PFNGLISPROGRAMPIPELINEPROC glIsProgramPipeline;
+  	PFNGLGETPROGRAMPIPELINEIVPROC glGetProgramPipelineiv;
+  	PFNGLPROGRAMPARAMETERIPROC glProgramParameteri;
+  	PFNGLPROGRAMUNIFORM1IPROC glProgramUniform1i;
+  	PFNGLPROGRAMUNIFORM1IVPROC glProgramUniform1iv;
+  	PFNGLPROGRAMUNIFORM1FPROC glProgramUniform1f;
+  	PFNGLPROGRAMUNIFORM1FVPROC glProgramUniform1fv;
+  	PFNGLPROGRAMUNIFORM1DPROC glProgramUniform1d;
+  	PFNGLPROGRAMUNIFORM1DVPROC glProgramUniform1dv;
+  	PFNGLPROGRAMUNIFORM1UIPROC glProgramUniform1ui;
+  	PFNGLPROGRAMUNIFORM1UIVPROC glProgramUniform1uiv;
+  	PFNGLPROGRAMUNIFORM2IPROC glProgramUniform2i;
+  	PFNGLPROGRAMUNIFORM2IVPROC glProgramUniform2iv;
+  	PFNGLPROGRAMUNIFORM2FPROC glProgramUniform2f;
+  	PFNGLPROGRAMUNIFORM2FVPROC glProgramUniform2fv;
+  	PFNGLPROGRAMUNIFORM2DPROC glProgramUniform2d;
+  	PFNGLPROGRAMUNIFORM2DVPROC glProgramUniform2dv;
+  	PFNGLPROGRAMUNIFORM2UIPROC glProgramUniform2ui;
+  	PFNGLPROGRAMUNIFORM2UIVPROC glProgramUniform2uiv;
+  	PFNGLPROGRAMUNIFORM3IPROC glProgramUniform3i;
+  	PFNGLPROGRAMUNIFORM3IVPROC glProgramUniform3iv;
+  	PFNGLPROGRAMUNIFORM3FPROC glProgramUniform3f;
+  	PFNGLPROGRAMUNIFORM3FVPROC glProgramUniform3fv;
+  	PFNGLPROGRAMUNIFORM3DPROC glProgramUniform3d;
+  	PFNGLPROGRAMUNIFORM3DVPROC glProgramUniform3dv;
+  	PFNGLPROGRAMUNIFORM3UIPROC glProgramUniform3ui;
+  	PFNGLPROGRAMUNIFORM3UIVPROC glProgramUniform3uiv;
+  	PFNGLPROGRAMUNIFORM4IPROC glProgramUniform4i;
+  	PFNGLPROGRAMUNIFORM4IVPROC glProgramUniform4iv;
+  	PFNGLPROGRAMUNIFORM4FPROC glProgramUniform4f;
+  	PFNGLPROGRAMUNIFORM4FVPROC glProgramUniform4fv;
+  	PFNGLPROGRAMUNIFORM4DPROC glProgramUniform4d;
+  	PFNGLPROGRAMUNIFORM4DVPROC glProgramUniform4dv;
+  	PFNGLPROGRAMUNIFORM4UIPROC glProgramUniform4ui;
+  	PFNGLPROGRAMUNIFORM4UIVPROC glProgramUniform4uiv;
+  	PFNGLPROGRAMUNIFORMMATRIX2FVPROC glProgramUniformMatrix2fv;
+  	PFNGLPROGRAMUNIFORMMATRIX3FVPROC glProgramUniformMatrix3fv;
+  	PFNGLPROGRAMUNIFORMMATRIX4FVPROC glProgramUniformMatrix4fv;
+  	PFNGLPROGRAMUNIFORMMATRIX2DVPROC glProgramUniformMatrix2dv;
+  	PFNGLPROGRAMUNIFORMMATRIX3DVPROC glProgramUniformMatrix3dv;
+  	PFNGLPROGRAMUNIFORMMATRIX4DVPROC glProgramUniformMatrix4dv;
+  	PFNGLPROGRAMUNIFORMMATRIX2X3FVPROC glProgramUniformMatrix2x3fv;
+  	PFNGLPROGRAMUNIFORMMATRIX3X2FVPROC glProgramUniformMatrix3x2fv;
+  	PFNGLPROGRAMUNIFORMMATRIX2X4FVPROC glProgramUniformMatrix2x4fv;
+  	PFNGLPROGRAMUNIFORMMATRIX4X2FVPROC glProgramUniformMatrix4x2fv;
+  	PFNGLPROGRAMUNIFORMMATRIX3X4FVPROC glProgramUniformMatrix3x4fv;
+  	PFNGLPROGRAMUNIFORMMATRIX4X3FVPROC glProgramUniformMatrix4x3fv;
+  	PFNGLPROGRAMUNIFORMMATRIX2X3DVPROC glProgramUniformMatrix2x3dv;
+  	PFNGLPROGRAMUNIFORMMATRIX3X2DVPROC glProgramUniformMatrix3x2dv;
+  	PFNGLPROGRAMUNIFORMMATRIX2X4DVPROC glProgramUniformMatrix2x4dv;
+  	PFNGLPROGRAMUNIFORMMATRIX4X2DVPROC glProgramUniformMatrix4x2dv;
+  	PFNGLPROGRAMUNIFORMMATRIX3X4DVPROC glProgramUniformMatrix3x4dv;
+  	PFNGLPROGRAMUNIFORMMATRIX4X3DVPROC glProgramUniformMatrix4x3dv;
+  	PFNGLVALIDATEPROGRAMPIPELINEPROC glValidateProgramPipeline;
+  	PFNGLGETPROGRAMPIPELINEINFOLOGPROC glGetProgramPipelineInfoLog;
+  	PFNGLVERTEXATTRIBL1DPROC glVertexAttribL1d;
+  	PFNGLVERTEXATTRIBL2DPROC glVertexAttribL2d;
+  	PFNGLVERTEXATTRIBL3DPROC glVertexAttribL3d;
+  	PFNGLVERTEXATTRIBL4DPROC glVertexAttribL4d;
+  	PFNGLVERTEXATTRIBL1DVPROC glVertexAttribL1dv;
+  	PFNGLVERTEXATTRIBL2DVPROC glVertexAttribL2dv;
+  	PFNGLVERTEXATTRIBL3DVPROC glVertexAttribL3dv;
+  	PFNGLVERTEXATTRIBL4DVPROC glVertexAttribL4dv;
+  	PFNGLVERTEXATTRIBLPOINTERPROC glVertexAttribLPointer;
+  	PFNGLGETVERTEXATTRIBLDVPROC glGetVertexAttribLdv;
+  	PFNGLVIEWPORTARRAYVPROC glViewportArrayv;
+  	PFNGLVIEWPORTINDEXEDFPROC glViewportIndexedf;
+  	PFNGLVIEWPORTINDEXEDFVPROC glViewportIndexedfv;
+  	PFNGLSCISSORARRAYVPROC glScissorArrayv;
+  	PFNGLSCISSORINDEXEDPROC glScissorIndexed;
+  	PFNGLSCISSORINDEXEDVPROC glScissorIndexedv;
+  	PFNGLDEPTHRANGEARRAYVPROC glDepthRangeArrayv;
+  	PFNGLDEPTHRANGEINDEXEDPROC glDepthRangeIndexed;
+  	PFNGLGETFLOATI_VPROC glGetFloati_v;
+  	PFNGLGETDOUBLEI_VPROC glGetDoublei_v;
 
     int _p_init_gl_41(platform_api *api) {
       int pixel_format;
