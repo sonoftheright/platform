@@ -38,7 +38,7 @@ case "$OSTYPE" in
     includes=""
     # library_locs=""
     linked_libraries=""
-    framework="-framework OpenGL -framework Cocoa"
+    framework="-framework AppKit -framework OpenGL"
     output="-o ./run/example -v"
     update_perms="chmod a+x ./run/example"
   ;;

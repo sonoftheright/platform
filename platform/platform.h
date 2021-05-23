@@ -146,9 +146,9 @@ typedef long long p_int64;
       #define NSUIntegerEncoding "I"
     #endif
 
-    // #ifdef __OBJC__
-    // #import <Cocoa/Cocoa.h>
-    // #else
+    #ifdef __OBJC__
+      // #import <Cocoa/Cocoa.h>
+    #endif
 
     // this is how they are defined originally
     // #include <CoreGraphics/CGBase.h>
@@ -572,6 +572,7 @@ typedef struct {
 
 
 #include "_log.h" // for p_log functions
+#include "_glext.h" // OpenGL constants & function names
 #include "_defines.h" // for all OpenGL constants & function names
 
 #ifdef PLATFORM_USE_OPENGL
@@ -2194,10 +2195,10 @@ platform_api *p_init(){
       // would be nice to use objc_autoreleasePoolPush instead, but it's not
       // publically available in the headers:
       // [[NSAutoreleasePool alloc] init]
-      id NSAutoreleasePool = objc_getClass("NSAutoreleasePool");
-      global_autoreleasePool = [[NSAutoreleasePool alloc] init];
-      // id poolAlloc = objc_msgSend_id((id)objc_getClass("NSAutoreleasePool"), sel_registerName("alloc"));
-      // global_autoreleasePool = objc_msgSend_id(poolAlloc, sel_registerName("init"));
+      // id NSAutoreleasePool = objc_getClass("NSAutoreleasePool");
+      // global_autoreleasePool = [[NSAutoreleasePool alloc] init];
+      id poolAlloc = objc_msgSend_id((id)objc_getClass("NSAutoreleasePool"), sel_registerName("alloc"));
+      global_autoreleasePool = objc_msgSend_id(poolAlloc, sel_registerName("init"));
       api->window.autoreleasepool = global_autoreleasePool;
 
       atexit(&_p_clean_up_macos);
@@ -2792,23 +2793,27 @@ void p_create_window(platform_api *api, int w, int h, char *title, float scale){
   int styleMask = NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable;
 
   NSRect rect = {{0, 0}, {(float)w, (float)h}};
-  // id windowAlloc = objc_msgSend_id((id)objc_getClass("NSWindow"), sel_registerName("alloc"));
-  id windowAlloc = [ objc_getClass("NSWindow") alloc ];
+  id windowAlloc = objc_msgSend_id((id)objc_getClass("NSWindow"), sel_registerName("alloc"));
+  // id windowAlloc = [ NSWindow alloc ];
   // (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)style backing:(NSBackingStoreType)backingStoreType defer:(BOOL)flag;
   id window = ((id(*)(id, SEL, NSRect, NSUInteger, NSUInteger, BOOL))objc_msgSend)(windowAlloc, sel_registerName("initWithContentRect:styleMask:backing:defer:"), rect, styleMask, NSBackingStoreBuffered, NO);
+  // id window = [[NSWindow alloc] initWithContentRect:rect styleMask:styleMask backing:NSBackingStoreBuffered defer:NO];
+
 
   api->window.window_handle = window;
 
   #ifndef ARC_AVAILABLE
-    objc_msgSend_void(window, sel_registerName("autorelease"));
+    [window autorelease];
+    // objc_msgSend_void(window, sel_registerName("autorelease"));
   #endif
 
   // when we are not using ARC, than window will be added to autorelease pool
   // so if we close it by hand (pressing red button), we don't want it to be
   // released for us so it will be released by autorelease pool later
-  objc_msgSend_void_bool(window, sel_registerName("setReleasedWhenClosed:"), NO);
+  // [window setReleasedWhenClosed:NO];
+	((void (*)(id, SEL, BOOL))objc_msgSend)(window, sel_registerName("setReleasedWhenClosed:"), NO);
 
-  Class WindowDelegateClass = objc_allocateClassPair((Class)objc_getClass("NSObject"), "WindowDelegate", 0);
+  Class WindowDelegateClass = objc_allocateClassPair([NSObject class], "WindowDelegate", 0);
 
   bool resultAddProtoc = class_addProtocol(WindowDelegateClass, objc_getProtocol("NSWindowDelegate"));
   assert(resultAddProtoc);

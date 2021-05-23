@@ -31,3 +31,4 @@ Other references this is based on:
 
 @TODO:
 - Audio support (currently working on using miniaudio for the time being, until we build-in audio to platform.h)
+  - We will introduce audio util functions into the platform header, using miniaudio as the "backend", so it will be easier to replace later.
