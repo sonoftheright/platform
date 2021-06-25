@@ -2202,32 +2202,32 @@ void p_init_camera(platform_api *api){
 
 void p_init_camera_2d(platform_api* api)
 {
-    api->quit = false;
-    api->window.shown = false;
+  // pull mouselock default for 3D since we're in 2D 
+  api->window.mouse_lock = false;
+  api->window.prev_mouse_lock = false;
 
-    api->draw.lock_size = false; // default to false here...
 
-    // let's set default camera stuff here:
-    api->camera.location[0] = 0.0f;
-    api->camera.location[1] = 0.0f;
-    api->camera.location[2] = CAMERA_LAYER;
+  // let's set default camera stuff here:
+  api->camera.location[0] = 0.0f;
+  api->camera.location[1] = 0.0f;
+  api->camera.location[2] = CAMERA_LAYER;
 
-    api->camera.camera_right[0] = 1.0f;
-    api->camera.camera_right[1] = 0.0f;
-    api->camera.camera_right[2] = 0.0f;
+  api->camera.camera_right[0] = 1.0f;
+  api->camera.camera_right[1] = 0.0f;
+  api->camera.camera_right[2] = 0.0f;
 
-    api->camera.camera_forward[0] = 0.0f;
-    api->camera.camera_forward[1] = 0.0f;
+  api->camera.camera_forward[0] = 0.0f;
+  api->camera.camera_forward[1] = 0.0f;
 
-    api->camera.camera_forward[2] = -1.0f;
+  api->camera.camera_forward[2] = -1.0f;
 
-    api->camera.fov = 45.0;
-    api->camera.fov_rad = p_to_radians(api->camera.fov);
-    api->camera.near_clip = 0.001f;
-    api->camera.far_clip = 5.0f;
-    api->camera.sensitivity = 0.000007;
-    api->camera.move_speed = 0.005;
-    api->camera.scale = 1.0f;
+  api->camera.fov = 45.0;
+  api->camera.fov_rad = p_to_radians(api->camera.fov);
+  api->camera.near_clip = 0.001f;
+  api->camera.far_clip = 5.0f;
+  api->camera.sensitivity = 0.000007;
+  api->camera.move_speed = 0.005;
+  api->camera.scale = 1.0f;
 }
 
 // init
@@ -2244,9 +2244,6 @@ platform_api *p_init(){
 
   #ifdef USE_2D
     p_init_camera_2d(api);
-    api->window.mouse_lock = false;
-    api->window.prev_mouse_lock = false;
-    api->window.scale = 1.0;
   #else
     p_init_camera(api);
   #endif
