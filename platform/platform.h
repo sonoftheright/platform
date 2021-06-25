@@ -626,6 +626,12 @@ void _p_update_window_size(platform_api *api, int render_width, int render_heigh
       api->draw.size[1] = render_height;
       api->draw.x = api->draw.size[0];
       api->draw.y = api->draw.size[1];
+
+      if(api->camera.ortho)
+      {
+        glViewport(0, 0, render_width, render_height);
+        //glViewport(0, 0, api->draw.size[0], api->draw.size[1]);
+      }
       // p_log("render size is: %i, %i\n", api->draw.size[0], api->draw.size[1]);
     }
   }
@@ -1554,6 +1560,56 @@ LRESULT CALLBACK p_api_WndProc(HWND hWnd, UINT message, WPARAM wParam,
       return DefWindowProcW(hWnd, message, wParam, lParam);
     }
   }
+  case WM_LBUTTONDOWN: 
+  {
+    if(api->mouse.left.is_down == FALSE)
+    {
+      api->mouse.left.is_down = TRUE;
+      //NOTE: may have been released last frame, so we'll ignore setting that this frame
+    }
+    else if(api->mouse.left.was_pressed == FALSE)
+    {
+      api->mouse.left.was_pressed = TRUE;
+      api->mouse.left.was_released = FALSE;
+    }
+  }
+  return 0;
+  case WM_LBUTTONUP:
+  {
+    if(api->mouse.left.is_down == TRUE)
+    {
+      api->mouse.left.is_down = FALSE;
+      api->mouse.left.was_released = TRUE;
+      //if we only get one message, we may never get an opportunity to set this.
+      api->mouse.left.was_pressed = FALSE;
+    }
+  }
+  return 0;
+  case WM_RBUTTONDOWN:
+  {
+    if(api->mouse.right.is_down == FALSE)
+    {
+      api->mouse.right.is_down = TRUE;
+      //NOTE: may have been released last frame, so we'll ignore setting that this frame
+    }
+    else if(api->mouse.right.was_pressed == FALSE)
+    {
+      api->mouse.right.was_pressed = TRUE;
+      api->mouse.right.was_released = FALSE;
+    }
+  }
+  return 0;
+  case WM_RBUTTONUP:
+  {
+    if(api->mouse.right.is_down == TRUE)
+    {
+      api->mouse.right.is_down = FALSE;
+      api->mouse.right.was_released = TRUE;
+      //if we only get one message, we may never get an opportunity to set this.
+      api->mouse.right.was_pressed = FALSE;
+    }
+  }
+  return 0;
   case WM_ACTIVATE:
     if(api) {
       memset(&api->keys, 0, P_NUM_KEYS);
@@ -2144,6 +2200,36 @@ void p_init_camera(platform_api *api){
 
 }
 
+void p_init_camera_2d(platform_api* api)
+{
+    api->quit = false;
+    api->window.shown = false;
+
+    api->draw.lock_size = false; // default to false here...
+
+    // let's set default camera stuff here:
+    api->camera.location[0] = 0.0f;
+    api->camera.location[1] = 0.0f;
+    api->camera.location[2] = CAMERA_LAYER;
+
+    api->camera.camera_right[0] = 1.0f;
+    api->camera.camera_right[1] = 0.0f;
+    api->camera.camera_right[2] = 0.0f;
+
+    api->camera.camera_forward[0] = 0.0f;
+    api->camera.camera_forward[1] = 0.0f;
+
+    api->camera.camera_forward[2] = -1.0f;
+
+    api->camera.fov = 45.0;
+    api->camera.fov_rad = p_to_radians(api->camera.fov);
+    api->camera.near_clip = 0.001f;
+    api->camera.far_clip = 5.0f;
+    api->camera.sensitivity = 0.000007;
+    api->camera.move_speed = 0.005;
+    api->camera.scale = 1.0f;
+}
+
 // init
 platform_api *p_init(){
   platform_api *api = (platform_api *)malloc(sizeof(platform_api));
@@ -2156,7 +2242,14 @@ platform_api *p_init(){
 
   api->window.scale = 1.0;
 
-  p_init_camera(api);
+  #ifdef USE_2D
+    p_init_camera_2d(api);
+    api->window.mouse_lock = false;
+    api->window.prev_mouse_lock = false;
+    api->window.scale = 1.0;
+  #else
+    p_init_camera(api);
+  #endif
 
   #ifdef PLATFORM_USE_OPENGL
     // default to vsync off...
@@ -2594,7 +2687,8 @@ int p_key_held(platform_api *api, int key) {
   return api->keys[k].is_down && api->prev_keys[k].is_down;
 }
 
-int p_key_up(platform_api *api, int key) {
+int p_key_up(platform_api *api, int key) 
+{
   int k;
 #ifdef __APPLE__
   assert(key < P_NUM_KEYS);
@@ -2609,7 +2703,7 @@ int p_key_up(platform_api *api, int key) {
 #endif
 
 // trigger only if it's been marked as released _this frame_ and not previously:
-return api->keys[key].was_released && !api->prev_keys[key].was_released;
+  return api->keys[k].was_released && !api->prev_keys[k].was_released;
 }
 
 #include "_camera.h"
